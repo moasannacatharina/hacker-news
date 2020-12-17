@@ -18,27 +18,27 @@
 
         <?php if (!isset($_SESSION['user'])) : ?>
             <li class="nav-item
-        <?php if ($_SERVER['PHP_SELF'] === '/login.php') : ?>
+            <?php if ($_SERVER['PHP_SELF'] === '/login.php') : ?>
                 active
-        <?php endif; ?>">
+            <?php endif; ?>">
                 <a class="nav-link" href="/login.php">Login</a>
             </li><!-- /nav-item -->
             <li class="nav-item
-        <?php if ($_SERVER['PHP_SELF'] === '/register.php') : ?>
+            <?php if ($_SERVER['PHP_SELF'] === '/register.php') : ?>
                 active
-        <?php endif; ?>">
+            <?php endif; ?>">
                 <a class="nav-link" href="/register.php">Create account</a>
             </li>
         <?php else : ?>
             <li class="nav-item
-        <?php if ($_SERVER['PHP_SELF'] === '/logout.php') : ?>
+            <?php if ($_SERVER['PHP_SELF'] === '/logout.php') : ?>
                 active
-        <?php endif; ?>">
+            <?php endif; ?>">
                 <a class="nav-link" href="/app/users/logout.php">Logout</a>
             <li class="nav-item
-        <?php if ($_SERVER['PHP_SELF'] === '/user.php') : ?>
+            <?php if ($_SERVER['PHP_SELF'] === '/user.php') : ?>
                 active
-        <?php endif; ?>">
+            <?php endif; ?>">
                 <a class="nav-link" href="/user.php?id=<?= $_SESSION['user']['id'] ?>">Your profile</a>
             </li><!-- /nav-item -->
         <?php endif; ?>
