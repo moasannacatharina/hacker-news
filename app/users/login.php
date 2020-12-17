@@ -5,7 +5,6 @@ declare(strict_types=1);
 require __DIR__ . '/../autoload.php';
 
 
-
 // In this file we login users.
 if (isset($_POST['email'], $_POST['password'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
@@ -28,10 +27,11 @@ if (isset($_POST['email'], $_POST['password'])) {
             'first_name' => $user['first_name'],
             'last_name' => $user['last_name'],
             'email' => $user['email'],
+            'bio' => $user['bio'],
         ];
-
         redirect('/');
     } else {
+        $_SESSION['message'] = "Invalid login credentials. Please try again.";
         redirect('/login.php');
     }
 }
