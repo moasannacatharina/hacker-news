@@ -14,25 +14,32 @@ if (isset($_POST['email'])) {
 
     $statement->execute();
 
-    redirect('/user.php');
-}
-
-if (isset($_POST['password'])) {
-    $password = $_POST['password'];
-    $id = $_SESSION['user']['id'];
-
-    $password = password_hash($password, PASSWORD_DEFAULT);
-    $statement = $database->prepare('UPDATE users SET password = :password WHERE id = :id');
-    $statement->bindParam(':password', $password, PDO::PARAM_STR);
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
-
+    $statement = $database->prepare('SELECT * FROM users WHERE id = :id');
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
     $statement->execute();
 
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+
+    if ($_SESSION['authenticated']) {
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'first_name' => $user['first_name'],
+            'last_name' => $user['last_name'],
+            'email' => $user['email'],
+            'bio' => $user['biography'],
+        ];
+        $_SESSION['message'] = 'Your email has been updated!';
+    } else {
+        $_SESSION['error_message'] = 'Whoops! Something went wrong. Try again later.';
+    };
+
     redirect('/user.php');
 }
 
-if (isset($_POST['biography'])) {
-    $bio = $_POST['biography'];
+
+if (isset($_POST['bio'])) {
+    $bio = $_POST['bio'];
     $id = $_SESSION['user']['id'];
 
     $statement = $database->prepare('UPDATE users SET biography = :biography WHERE id = :id');
@@ -41,26 +48,81 @@ if (isset($_POST['biography'])) {
 
     $statement->execute();
 
+    $statement = $database->prepare('SELECT * FROM users WHERE id = :id');
+    $statement->bindParam(':id', $id, PDO::PARAM_STR);
+    $statement->execute();
+
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+
+
+    if ($_SESSION['authenticated']) {
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'first_name' => $user['first_name'],
+            'last_name' => $user['last_name'],
+            'email' => $user['email'],
+            'bio' => $user['biography'],
+        ];
+        $_SESSION['message'] = 'Your biography has been saved!';
+    } else {
+        $_SESSION['error_message'] = 'Whoops! Something went wrong. Try again later.';
+    };
+
+
     redirect('/user.php');
 }
 
-// if(isset($_POST['avatar'])) {
+if (isset($_POST['new_password'])) {
+    $id = $_SESSION['user']['id'];
+
+    $new_password = $confirm_password = "";
 
 
-//     $avatar = $_POST['avatar'];
+    if (strlen(trim($_POST["new_password"])) < 6) {
+        $_SESSION['error_message'] = "Password must have atleast 6 characters.";
+        redirect('/user.php');
+    } else {
+        $new_password = trim($_POST["new_password"]);
+    }
 
+    $confirm_password = trim($_POST["confirm_password"]);
 
-//     $password = password_hash($password, PASSWORD_DEFAULT);
+    if (empty($_SESSION['error_message']) && ($new_password != $confirm_password)) {
+        $_SESSION['error_message'] = "Passwords did not match.";
+        redirect('/user.php');
+    }
 
+    if (empty($_SESSION['error_message'])) {
+        $new_password = password_hash($new_password, PASSWORD_DEFAULT);
+        $statement = $database->prepare('UPDATE users SET password = :password WHERE id = :id');
+        $statement->bindParam(':password', $new_password, PDO::PARAM_STR);
+        $statement->bindParam(':id', $id, PDO::PARAM_INT);
 
-//     $statement->bindParam(':password', $password, PDO::PARAM_STR);
-//     $statement->bindParam(':first_name', $first_name, PDO::PARAM_STR);
-//     $statement->bindParam(':last_name', $last_name, PDO::PARAM_STR);
-//     $statement->execute();
+        $statement->execute();
 
-//     $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['message'] = 'Your password has been updated!';
 
+        redirect('/user.php');
+    }
+}
 
-// }
+if (isset($_FILES['image'])) {
+    $file = $_FILES['image'];
 
-// redirect('/users.php');
+    if ($file['type'] !== 'image/png') {
+        $_SESSION['error_message'] = 'The chosen file type is not allowed';
+        redirect('/user.php');
+    } elseif ($file['size'] > 3145728) {
+        $_SESSION['error_message'] = 'The uploaded file exceeded the file size limit.';
+        redirect('/user.php');
+    } else {
+
+        $newFileName = date("ymd") . '-' . $file['name'];
+
+        $destination = __DIR__ . '/' . $newFileName;
+
+        move_uploaded_file($file['tmp_name'], $destination);
+        $_SESSION['message'] = "Success! Your profile image has been updated.";
+    }
+    redirect('/user.php');
+}
