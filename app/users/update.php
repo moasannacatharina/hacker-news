@@ -116,7 +116,6 @@ if (isset($_FILES['image'])) {
         $_SESSION['error_message'] = 'The uploaded file exceeded the file size limit.';
         redirect('/user.php');
     } else {
-
         $newFileName = date("ymd") . '-' . $file['name'];
 
         $destination = __DIR__ . '/' . $newFileName;
