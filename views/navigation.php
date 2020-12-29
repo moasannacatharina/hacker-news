@@ -10,10 +10,10 @@
         </li>
 
         <li class="nav-item
-        <?php if ($_SERVER['PHP_SELF'] === '/about.php') : ?>
+        <?php if ($_SERVER['PHP_SELF'] === '/submit.php') : ?>
                 active
         <?php endif; ?>">
-            <a class="nav-link" href="/about.php">About</a>
+            <a class="nav-link" href="/submit.php">Submit</a>
         </li>
 
         <?php if (isset($_SESSION['user'])) : ?>
@@ -21,7 +21,7 @@
             <?php if ($_SERVER['PHP_SELF'] === '/user.php') : ?>
                 active
             <?php endif; ?>">
-                <a class="nav-link" href="/user.php?id=<?= $_SESSION['user']['id'] ?>">Your profile</a>
+                <a class="nav-link" href="/user.php?id=<?= $_SESSION['user']['first_name'] ?>">Your profile</a>
             </li><!-- /nav-item -->
             <li class="nav-item
             <?php if ($_SERVER['PHP_SELF'] === '/logout.php') : ?>
