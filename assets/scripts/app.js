@@ -22,14 +22,14 @@ const body = document.querySelector("body");
 let menuBoxOpen = false;
 
 menuBtn.addEventListener("click", () => {
-  menuContainer.style.display = "flex";
-  menuContainer.style.animation = "smooth 0.2s linear";
-  menuBtn.style.display = "none";
+    menuContainer.style.display = "flex";
+    menuContainer.style.animation = "smooth 0.2s linear";
+    menuBtn.style.display = "none";
 });
 
 closeBtn.addEventListener("click", () => {
-  menuContainer.style.display = "none";
-  menuBtn.style.display = "block";
+    menuContainer.style.display = "none";
+    menuBtn.style.display = "block";
 });
 
 // body.addEventListener("click", (e) => {
