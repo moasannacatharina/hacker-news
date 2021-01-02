@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/../autoload.php';
 
+
 if (isset($_POST['email'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $id = $_SESSION['user']['id'];
@@ -109,19 +110,21 @@ if (isset($_POST['new_password'])) {
 if (isset($_FILES['image'])) {
     $file = $_FILES['image'];
 
-    if ($file['type'] !== 'image/png') {
+    if ($file['type'] !== 'image/jpeg') {
         $_SESSION['error_message'] = 'The chosen file type is not allowed';
         redirect('/user.php');
     } elseif ($file['size'] > 3145728) {
         $_SESSION['error_message'] = 'The uploaded file exceeded the file size limit.';
         redirect('/user.php');
     } else {
-        $newFileName = date("ymd") . '-' . $file['name'];
+        $new_file_name = $_SESSION['user']['id'] . '.jpg';
+        $uploads_dir = '/images/';
 
-        $destination = __DIR__ . '/' . $newFileName;
+        $destination = __DIR__ . $uploads_dir . $new_file_name;
 
         move_uploaded_file($file['tmp_name'], $destination);
         $_SESSION['message'] = "Success! Your profile image has been updated.";
+        $_SESSION['image'] = $new_file_name;
     }
     redirect('/user.php');
 }

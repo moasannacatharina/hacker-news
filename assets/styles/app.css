@@ -1,1 +1,145 @@
 /* In this file you can add your custom styles. */
+
+.edit-invisible {
+  display: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Questrial";
+  src: url("/assets/fonts/Questrail-font/Questrial-Regular.woff2")
+      format("woff2"),
+    url("/assets/fonts/Questrail-font/Questrial-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: "Questrial", Arial, Helvetica, sans-serif;
+  color: white;
+  background-color: #222326;
+  letter-spacing: 0.5px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  padding: 1rem;
+  margin-top: 5rem;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+button,
+input[type="submit"],
+input[type="reset"] {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+/**** LIST OF ARTICLES  ****/
+
+.content-list,
+.own-submissions {
+  margin-top: 2rem;
+}
+.content-list ol,
+.own-submissions ul {
+  padding: 1rem;
+}
+.subtext {
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+/*** FORM  ***/
+form {
+  margin-bottom: 1rem;
+}
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+form button {
+  color: lightseagreen;
+}
+
+label {
+  margin-top: 10px;
+}
+
+input {
+  height: 30px;
+}
+
+/* PROFILE  */
+.user-info {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+.user-info-text {
+  margin-left: 3rem;
+}
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.user-info p {
+  color: lightgray;
+  font-style: italic;
+}
+/* LIST OF OWN SUBMISSIONS  */
+
+.own-submissions li {
+  font-size: 20px;
+}
+.own-submissions li p {
+  font-size: 16px;
+  color: lightgray;
+}
+
+.own-submissions .subtext {
+  color: lightgray;
+}
+
+/* MESSAGES  */
+
+.alert.alert-success {
+  color: rgb(179, 231, 179);
+}
+
+.alert.alert-danger {
+  color: rgb(226, 125, 84);
+}
+
+.alert {
+  margin-bottom: 20px;
+}
+
+footer {
+  height: 60px;
+  background-color: black;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
