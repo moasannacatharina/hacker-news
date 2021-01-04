@@ -1,6 +1,30 @@
 @media screen and (min-width: 700px) {
-  input,
-  textarea {
-    width: 50%;
-  }
+    input,
+    textarea {
+        width: 50%;
+    }
+
+    nav {
+        justify-content: flex-start;
+    }
+    .menu-list {
+        display: flex;
+        height: unset;
+        position: unset;
+        background-color: #525057;
+        width: unset;
+    }
+
+    .menu-list ul {
+        display: flex;
+        flex-direction: row;
+        margin-top: unset;
+    }
+
+    nav ul li {
+        margin: 20px;
+    }
+    nav button {
+        display: none;
+    }
 }

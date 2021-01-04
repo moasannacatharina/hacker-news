@@ -23,12 +23,21 @@ if (isset($_POST['title'], $_POST['url'], $_POST['description'])) {
     $statement->bindParam(':user_id', $id, PDO::PARAM_INT);
     $statement->execute();
 
-    $statement = $database->prepare('SELECT * FROM posts ORDER BY id DESC');
+
+
+    /// POST_ID?? HUR SKA JAG VETA EN SPECIFIK POSTS ID?
+    $statement = $database->query('SELECT * FROM posts ORDER BY id DESC LIMIT 1');
+    $post = $statement->fetch();
+
+    $post_id = $post['id'];
+    $post_user_id = $post['user_id'];
+    $number_of_upvotes = 0;
+
+    $statement = $database->prepare('INSERT INTO upvotes (number_of_upvotes, user_id, post_id) VALUES (:number_of_upvotes, :user_id, :post_id)');
+    $statement->bindParam(':number_of_upvotes', $number_of_upvotes, PDO::PARAM_INT);
+    $statement->bindParam(':user_id', $post_user_id, PDO::PARAM_INT);
+    $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
     $statement->execute();
-
-    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-    $_SESSION['posts'] = $posts;
 
     $_SESSION['message'] = 'Your post has been submitted!';
 }

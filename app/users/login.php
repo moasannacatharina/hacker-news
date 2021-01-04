@@ -18,12 +18,6 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-    $statement = $database->prepare('SELECT * FROM posts ORDER BY id DESC');
-    $statement->execute();
-
-    $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-
     if (
         isset($user['password']) &&
         password_verify($password, $user['password'])
@@ -36,10 +30,9 @@ if (isset($_POST['email'], $_POST['password'])) {
             'bio' => $user['biography'],
         ];
         $_SESSION['authenticated'] = true;
-        $_SESSION['posts'] = $posts;
         redirect('/');
     } else {
-        $_SESSION['message'] = "Invalid login credentials. Please try again.";
+        $_SESSION['error_message'] = "Invalid login credentials. Please try again.";
         redirect('/login.php');
     }
 }

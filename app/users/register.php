@@ -20,8 +20,8 @@ if (isset($_POST['email'], $_POST['password'], $_POST['first_name'], $_POST['las
     $statement->execute();
 
     $user = $statement->fetch(PDO::FETCH_ASSOC);
-
+    $_SESSION['message'] = 'Your account has been created. Please log in below.';
     redirect('/login.php');
 }
 
-redirect('/');
+redirect('/register.php');

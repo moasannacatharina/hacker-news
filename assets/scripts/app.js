@@ -40,3 +40,24 @@ closeBtn.addEventListener("click", () => {
 //     menuContainer.style.display = "none";
 //   }
 // });
+
+const newBtn = document.querySelector(".new-btn");
+const mostLikedBtn = document.querySelector(".most-liked-btn");
+
+newBtn.addEventListener("click", () => {
+    newBtn.classList.add("active");
+    mostLikedBtn.classList.remove("active");
+});
+mostLikedBtn.addEventListener("click", () => {
+    newBtn.classList.remove("active");
+    mostLikedBtn.classList.add("active");
+});
+
+// const upvoteBtn = document.querySelector(".upvote-btn");
+// const count = document.querySelector(".count");
+// let index = 0;
+
+// upvoteBtn.addEventListener("click", () => {
+//     index++;
+//     count.textContent = index;
+// });

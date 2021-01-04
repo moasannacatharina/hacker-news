@@ -46,20 +46,21 @@ $fileName = 'app/users/images/' . $_SESSION['user']['id'] . '.jpg';
             </p>
         </div>
     </div>
-    <form action="app/users/update.php" method="post">
-        <div class="form-group">
-            <label for="biography">Update your bio</label>
-            <textarea class="form-control" rows="5" cols="5" type="text" name="bio" id="bio"><?= $_SESSION['user']['bio']; ?></textarea>
-            <!-- <small class="form-text text-muted">Write something about yourself</small> -->
-        </div><!-- /form-group -->
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
 
     <form action="app/users/update.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="image">Upload profile image</label>
             <input class="form-control" type="file" name="image" id="image" accepts=".jpg" />
             <!-- <small class="form-text text-muted">Choose a PNG image to upload.</small> -->
+        </div><!-- /form-group -->
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+
+    <form action="app/users/update.php" method="post">
+        <div class="form-group">
+            <label for="biography">Update your bio</label>
+            <textarea class="form-control" rows="5" cols="5" type="text" name="bio" id="bio"><?= $_SESSION['user']['bio']; ?></textarea>
+            <!-- <small class="form-text text-muted">Write something about yourself</small> -->
         </div><!-- /form-group -->
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
