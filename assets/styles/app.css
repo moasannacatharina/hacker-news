@@ -91,6 +91,25 @@ input[type="reset"] {
     color: lightgray;
 }
 
+.subtext #edit-post {
+    margin-left: 10px;
+}
+.subtext #delete-post {
+    color: rgb(226, 125, 84);
+    margin-left: 15px;
+}
+
+/* .post-headline {
+    display: flex;
+    align-items: center;
+}
+
+.post-headline p {
+    font-size: 15px;
+    color: lightgray;
+    margin-left: 10px;
+} */
+
 .active {
     text-decoration: underline;
     font-weight: bold;
@@ -129,6 +148,23 @@ input {
     height: 30px;
 }
 
+.delete-post a {
+    color: rgb(226, 125, 84);
+}
+
+.post-info p {
+    color: lightgray;
+}
+
+.poster {
+}
+
+.post-info h3 {
+    margin-bottom: 10px;
+}
+.post-info {
+    margin-top: 10px;
+}
 /* PROFILE  */
 .user-info {
     margin-bottom: 2rem;

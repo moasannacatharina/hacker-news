@@ -1,19 +1,19 @@
 console.log("Hello World");
 
-// const editPostBtns = document.querySelectorAll(".edit-post");
-// const editForms = document.querySelectorAll(".edit-invisible");
-// const listItems = document.querySelectorAll(".submitted-post");
+const editPostBtns = document.querySelectorAll(".edit-post");
+const editForms = document.querySelectorAll(".edit-invisible");
+const listItems = document.querySelectorAll(".submitted-post");
 
-// listItems.forEach((listItem) => {
-//   editPostBtns.forEach((editPostBtn) => {
-//     editForms.forEach((editForm) => {
-//       editPostBtn.addEventListener("click", () => {
-//         editForm.style.display = "block";
-//         listItem.style.display = "none";
-//       });
-//     });
-//   });
-// });
+listItems.forEach((listItem) => {
+    editPostBtns.forEach((editPostBtn) => {
+        editForms.forEach((editForm) => {
+            editPostBtn.addEventListener("click", () => {
+                editForm.style.display = "block";
+                listItem.style.display = "none";
+            });
+        });
+    });
+});
 
 const menuBtn = document.querySelector(".menu-btn");
 const menuContainer = document.querySelector(".menu-list");

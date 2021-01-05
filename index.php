@@ -2,12 +2,10 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 <?php
 
-$statement = $database->prepare('SELECT posts.id, posts.title, posts.url, posts.description, posts.created_at, posts.user_id, users.email, upvotes.number_of_upvotes
+$statement = $database->prepare('SELECT posts.id, posts.title, posts.url, posts.description, posts.created_at, posts.user_id, users.email
 FROM posts
 INNER JOIN users
 ON posts.user_id = users.id
-INNER JOIN upvotes
-ON upvotes.post_id = posts.id
 ORDER BY posts.id DESC');
 $statement->execute();
 
@@ -36,15 +34,10 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
     <button class="most-liked-btn">Most liked</button>
     <ol>
         <?php foreach ($posts as $post) : ?>
-            <?php $_SESSION['post']['id'] = $post['id']; ?>
-            <?= $_SESSION['post']['id']; ?>
             <li>
-                <form action="/app/posts/upvote.php" method="POST">
+                <form action="/app/posts/upvote.php?id=<?= $post['id']; ?>" method="POST">
                     <input type="submit" name="upvote" id="upvote" />
                 </form>
-                <!-- <button class="upvote-btn">
-                    like
-                </button> -->
                 <a href="<?= $post['url']; ?>">
                     <?= $post['title']; ?>
                 </a>
@@ -56,13 +49,14 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
                 <p>
                     <?= $post['email']; ?>
                 </p>
-                <p><span class="count"><?= $post['number_of_upvotes']; ?></span> points</p>
-                <a href="">
+                <a href="/post.php?id=<?= $post['id']; ?>">
                     View more |
                 </a>
                 <button>
                     Comment
                 </button>
+                <?php $upvotes = countUpvotes($database, $post['id']); ?>
+                <p><?= $upvotes; ?> vote </p>
             </div>
         <?php endforeach; ?>
     </ol>

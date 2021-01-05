@@ -8,9 +8,14 @@ if (!isset($_SESSION["user"]) || $_SESSION["authenticated"] !== true) {
     exit;
 }
 
+
+$message = $_SESSION['message'] ?? '';
+unset($_SESSION['message']);
+
+
 $user_id = $_SESSION['user']['id'];
 
-$statement = $database->prepare('SELECT * FROM posts WHERE user_id = :user_id');
+$statement = $database->prepare('SELECT * FROM posts WHERE user_id = :user_id ORDER BY id DESC');
 $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 
 $statement->execute();
@@ -20,9 +25,15 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <article class="own-submissions">
+    <?php if ($message !== '') : ?>
+        <div class="alert alert-success">
+            <?= $message; ?>
+        </div><!-- /alert -->
+    <?php endif; ?>
     <h1>Your submissions</h1>
     <ul>
         <?php foreach ($posts as $post) : ?>
+            <?php $_SESSION['post'] = $post; ?>
             <li class="submitted-post">
                 <a href="<?= $post['url']; ?>">
                     <?= $post['title']; ?>
@@ -33,29 +44,12 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
             </li>
             <div class="subtext">
                 <?= $post['created_at']; ?>
-                <button class="edit-post">
+                <a href="/edit.php?id=<?= $post['id']; ?>" id="edit-post">
                     Edit
-                </button>
-            </div>
-            <div class="edit-invisible">
-                <h5>Edit Post</h5>
-                <form action="app/posts/update.php" method="post">
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input class="form-control" type="title" name="title" id="title" placeholder="<?= $post['title']; ?>">
-                    </div><!-- /form-group -->
-
-                    <div class="form-group">
-                        <label for="url">Url</label>
-                        <input class="form-control" type="url" name="url" id="url" placeholder="<?= $post['url']; ?>">
-                    </div><!-- /form-group -->
-
-                    <div class=" form-group">
-                        <label for="description">Description</label>
-                        <input class="form-control" rows="10" cols="15" type="text" name="description" id="description" placeholder="<?= $post['description']; ?>">
-                    </div><!-- /form-group -->
-
-                    <button type="submit" class="btn btn-primary">Save</button>
+                </a>
+                <a href="/app/posts/delete.php?id=<?= $post['id']; ?>" id="delete-post">
+                    Delete
+                </a>
             </div>
         <?php endforeach; ?>
     </ul>

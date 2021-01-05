@@ -2,6 +2,11 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 <?php
 
+if (!isset($_SESSION["user"]) || $_SESSION["authenticated"] !== true) {
+    redirect("/login.php");
+    exit;
+}
+
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
 

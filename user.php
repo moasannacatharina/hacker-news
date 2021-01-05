@@ -15,7 +15,6 @@ unset($_SESSION['error_message']);
 
 $fileName = 'app/users/images/' . $_SESSION['user']['id'] . '.jpg';
 
-// die(var_dump($fileName));
 ?>
 
 <article>
