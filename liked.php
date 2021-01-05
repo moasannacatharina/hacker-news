@@ -2,12 +2,17 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 <?php
 
-$statement = $database->prepare('SELECT posts.id, posts.title, posts.url, posts.description, posts.created_at, posts.user_id, users.email
-FROM posts
+
+$statement = $database->prepare('SELECT COUNT(upvotes.post_id) as votes, posts.id, posts.title, posts.url, posts.description, posts.created_at, posts.user_id, users.email
+FROM upvotes
+INNER JOIN posts
+ON upvotes.post_id = posts.id
 INNER JOIN users
 ON posts.user_id = users.id
-ORDER BY posts.id DESC');
+GROUP BY upvotes.post_id
+ORDER BY votes DESC');
 $statement->execute();
+
 
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -21,8 +26,8 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 </article>
 
 <article class="content-list">
-    <button class="new-btn active">New</button>
-    <button class="most-liked-btn"><a href="/liked.php">Most liked</a></button>
+    <button class="new-btn"><a href="/">New</a></button>
+    <button class="most-liked-btn active">Most liked</button>
     <ol>
         <?php foreach ($posts as $post) : ?>
             <li>

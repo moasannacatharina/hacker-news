@@ -37,3 +37,5 @@ $post = $statement->fetch();
 
         <button type="submit" class="btn btn-primary">Save</button>
 </article>
+
+<?php require __DIR__ . '/views/footer.php'; ?>

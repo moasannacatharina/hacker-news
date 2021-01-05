@@ -98,7 +98,10 @@ input[type="reset"] {
     color: rgb(226, 125, 84);
     margin-left: 15px;
 }
-
+.upvote-btn {
+    width: 12px;
+    fill: lightseagreen;
+}
 /* .post-headline {
     display: flex;
     align-items: center;
@@ -154,9 +157,6 @@ input {
 
 .post-info p {
     color: lightgray;
-}
-
-.poster {
 }
 
 .post-info h3 {

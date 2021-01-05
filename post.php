@@ -56,7 +56,15 @@ $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
 
     <div class="subtext">
         <?php $upvotes = countUpvotes($database, $post['id']); ?>
-        <p><?= $upvotes; ?> vote </p>
+        <?php if ($upvotes <= 1) : ?>
+            <p>
+                <?= $upvotes; ?> vote
+            </p>
+        <?php else : ?>
+            <p>
+                <?= $upvotes; ?> votes
+            </p>
+        <?php endif; ?>
         <p>
             <?= $post['email']; ?>
         </p>
@@ -75,3 +83,5 @@ $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </article>
+
+<?php require __DIR__ . '/views/footer.php'; ?>
