@@ -18,15 +18,15 @@ closeBtn.addEventListener("click", () => {
     menuBtn.style.display = "block";
 });
 
-// Adding active state to NEW button and MOST LIKED button on index-page
-const newBtn = document.querySelector(".new-btn");
-const mostLikedBtn = document.querySelector(".most-liked-btn");
+// // Adding active state to NEW button and MOST LIKED button on index-page
+// const newBtn = document.querySelector(".new-btn");
+// const mostLikedBtn = document.querySelector(".most-liked-btn");
 
-newBtn.addEventListener("click", () => {
-    newBtn.classList.add("active");
-    mostLikedBtn.classList.remove("active");
-});
-mostLikedBtn.addEventListener("click", () => {
-    newBtn.classList.remove("active");
-    mostLikedBtn.classList.add("active");
-});
+// newBtn.addEventListener("click", () => {
+//     newBtn.classList.add("active");
+//     mostLikedBtn.classList.remove("active");
+// });
+// mostLikedBtn.addEventListener("click", () => {
+//     newBtn.classList.remove("active");
+//     mostLikedBtn.classList.add("active");
+// });

@@ -3,12 +3,6 @@
 
 <?php
 
-// if (!isset($_SESSION["user"]) || $_SESSION["authenticated"] !== true) {
-//     redirect("/login.php");
-//     exit;
-// }
-
-
 $message = $_SESSION['message'] ?? '';
 unset($_SESSION['message']);
 
@@ -23,11 +17,11 @@ WHERE posts.id = :post_id LIMIT 1');
 
 $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
 $statement->execute();
-
-
-
 $post = $statement->fetch();
 
+
+$statement = $database->query('SELECT * FROM comments');
+$comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
 // die(var_dump($post));
 
@@ -56,7 +50,7 @@ $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
 
     <div class="subtext">
         <?php $upvotes = countUpvotes($database, $post['id']); ?>
-        <?php if ($upvotes <= 1) : ?>
+        <?php if ($upvotes == 1) : ?>
             <p>
                 <?= $upvotes; ?> vote
             </p>
@@ -74,7 +68,7 @@ $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
 
     </div>
 
-    <form action="app/users/comment.php?id=<?= $post['id']; ?>" method="post">
+    <form action="app/comments/store.php?id=<?= $post['id']; ?>" method="post">
         <div class="form-group">
             <label for="comment">Comment</label>
             <textarea class="form-control" rows="5" cols="5" type="text" name="comment" id="comment"></textarea>

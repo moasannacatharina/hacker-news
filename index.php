@@ -22,7 +22,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 <article class="content-list">
     <button class="new-btn active">New</button>
-    <button class="most-liked-btn"><a href="/liked.php">Most liked</a></button>
+    <button class="most-liked-btn"><a href="/most-upvoted.php">Most upvoted</a></button>
     <ol>
         <?php foreach ($posts as $post) : ?>
             <li>
@@ -49,7 +49,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
                     Comment
                 </button>
                 <?php $upvotes = countUpvotes($database, $post['id']); ?>
-                <?php if ($upvotes <= 1) : ?>
+                <?php if ($upvotes == 1) : ?>
                     <p>
                         <?= $upvotes; ?> vote
                     </p>

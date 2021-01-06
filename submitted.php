@@ -44,7 +44,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
             </li>
             <div class="subtext">
                 <?= $post['created_at']; ?>
-                <a href="/edit.php?id=<?= $post['id']; ?>" id="edit-post">
+                <a href="/edit-post.php?id=<?= $post['id']; ?>" id="edit-post">
                     Edit
                 </a>
                 <a href="/app/posts/delete.php?id=<?= $post['id']; ?>" id="delete-post">
