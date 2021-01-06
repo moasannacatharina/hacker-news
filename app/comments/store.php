@@ -7,7 +7,6 @@ require __DIR__ . '/../autoload.php';
 $_SESSION['message'] = '';
 
 if (isset($_SESSION['user'])) {
-
     if (isset($_POST['comment'])) {
         $content = trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING));
         $post_id = $_GET['id'];

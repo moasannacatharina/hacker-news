@@ -7,7 +7,6 @@ require __DIR__ . '/../autoload.php';
 $_SESSION['message'] = '';
 
 if (isset($_SESSION['user'])) {
-
     if (isset($_POST)) {
         $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
         $url = filter_var($_POST['url'], FILTER_SANITIZE_URL);
