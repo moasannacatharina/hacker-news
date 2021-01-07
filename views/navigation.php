@@ -2,7 +2,6 @@
     <a class="navbar-brand" href="/"><?php echo $config['title']; ?></a>
 
     <button>
-        <!-- <img src="/assets/images/menu.svg" class="menu-btn" /> -->
         <svg height="512" viewBox="0 -53 384 384" width="512" xmlns="http://www.w3.org/2000/svg" class="menu-btn">
             <path d="M368 154.668H16c-8.832 0-16-7.168-16-16s7.168-16 16-16h352c8.832 0 16 7.168 16 16s-7.168 16-16 16zm0 0M368 32H16C7.168 32 0 24.832 0 16S7.168 0 16 0h352c8.832 0 16 7.168 16 16s-7.168 16-16 16zm0 0M368 277.332H16c-8.832 0-16-7.168-16-16s7.168-16 16-16h352c8.832 0 16 7.168 16 16s-7.168 16-16 16zm0 0" />
         </svg>
@@ -28,19 +27,36 @@
                 <a class="nav-link" href="/submit.php">Submit</a>
             </li>
 
+            <!-- DROP DOWN MENU inside NAV with active state on both 'user.php' and 'submitted.php' -->
             <?php if (isset($_SESSION['user'])) : ?>
-                <li class="nav-item
-                <?php if ($_SERVER['PHP_SELF'] === '/user.php') : ?>
-                    active
-                <?php endif; ?>">
-                    <a class="nav-link" href="/user.php?id=<?= $_SESSION['user']['id'] ?>">Your profile</a>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <button class="dropbtn
+                        <?php if ($_SERVER['PHP_SELF'] === '/user.php') : ?>
+                        active
+                        <?php elseif ($_SERVER['PHP_SELF'] === '/submitted.php') : ?>
+                        active
+                        <?php endif; ?>">
+                            <?= $_SESSION['user']['first_name']; ?>
+                        </button>
+                        <div class="dropdown-content-hidden">
+                            <a class="nav-link" href="/user.php?id=<?= $_SESSION['user']['id'] ?>">
+                                Your profile
+                            </a>
+                            <a class="navlink" href="/submitted.php?id=<?= $_SESSION['user']['id']; ?>">
+                                Submissions
+                            </a>
+                        </div>
+                    </div>
                 </li><!-- /nav-item -->
+                <!-- End of drop down menu -->
                 <li class="nav-item
                 <?php if ($_SERVER['PHP_SELF'] === '/logout.php') : ?>
                 active
                 <?php endif; ?>">
                     <a class="nav-link" href="/app/users/logout.php">Logout</a>
                 </li>
+                <!-- IF SESSION USER IS NOT SET:-->
             <?php else : ?>
                 <li class="nav-item
                 <?php if ($_SERVER['PHP_SELF'] === '/login.php') : ?>

@@ -24,7 +24,22 @@
     nav ul li {
         margin: 20px;
     }
-    nav button {
+    .menu-btn,
+    .close-btn {
         display: none;
     }
+
+    .poster {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* .dropdown:hover .dropdown-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .dropdown:hover a:first-child {
+        background-color: #7b7a81;
+    } */
 }

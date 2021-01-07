@@ -8,7 +8,7 @@ $_SESSION['message'] = '';
 
 if (isset($_SESSION['user'])) {
     if (isset($_POST['comment'])) {
-        $content = trim(filter_var($_POST['comment'], FILTER_SANITIZE_STRING));
+        $content = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
         $post_id = $_GET['id'];
         $id = $_SESSION['user']['id'];
         $created_at = date("Y-m-d");

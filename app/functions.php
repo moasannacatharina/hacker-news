@@ -20,3 +20,15 @@ function countUpvotes($database, int $postId)
 
     return $upvotes['COUNT(*)'];
 }
+
+function countComments($database, int $postId)
+{
+
+    $statement = $database->prepare('SELECT COUNT(*) FROM comments WHERE post_id = :postId');
+    $statement->bindParam(':postId', $postId, PDO::PARAM_INT);
+    $statement->execute();
+
+    $numberOfComments = $statement->fetch();
+
+    return $numberOfComments['COUNT(*)'];
+}

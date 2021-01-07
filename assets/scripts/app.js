@@ -30,3 +30,18 @@ closeBtn.addEventListener("click", () => {
 //     newBtn.classList.remove("active");
 //     mostLikedBtn.classList.add("active");
 // });
+
+// DROPDOWN MENU
+
+const dropDownBtn = document.querySelector(".dropbtn");
+const dropDownContent = document.querySelector(".dropdown-content-hidden");
+
+dropDownBtn.addEventListener("click", () => {
+    if (dropDownContent.className === "dropdown-content-hidden") {
+        dropDownContent.classList.add("dropdown-content");
+        dropDownContent.classList.remove("dropdown-content-hidden");
+    } else {
+        dropDownContent.classList.remove("dropdown-content");
+        dropDownContent.classList.add("dropdown-content-hidden");
+    }
+});

@@ -130,6 +130,8 @@ form div {
 form button {
     color: lightseagreen;
     margin-top: 5px;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 #log-in-btn {
@@ -158,9 +160,12 @@ input {
 .post-info p {
     color: lightgray;
 }
-
+.post-info div {
+    display: flex;
+}
 .post-info h3 {
     margin-bottom: 10px;
+    margin-left: 5px;
 }
 .post-info {
     margin-top: 10px;
@@ -211,6 +216,27 @@ input {
 .alert {
     margin-bottom: 20px;
 }
+
+/* COMMENTS  */
+
+.comment {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.comment-user {
+    font-size: 15px;
+    color: lightgray;
+}
+.delete-comment {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: rgb(226, 125, 84);
+    font-weight: bold;
+    /* font-size: 20px; */
+}
+/* FOOTER */
 
 footer {
     height: 80px;

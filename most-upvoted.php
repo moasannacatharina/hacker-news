@@ -47,22 +47,29 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
                 <p>
                     <?= $post['email']; ?>
                 </p>
-                <a href="/post.php?id=<?= $post['id']; ?>">
-                    View more |
-                </a>
-                <button>
-                    Comment
-                </button>
+
                 <?php $upvotes = countUpvotes($database, $post['id']); ?>
-                <?php if ($upvotes == 1) : ?>
-                    <p>
-                        <?= $upvotes; ?> vote
-                    </p>
-                <?php else : ?>
-                    <p>
-                        <?= $upvotes; ?> votes
-                    </p>
-                <?php endif; ?>
+                <?php $numberOfComments = countComments($database, $post['id']); ?>
+                <div>
+                    <?php if ($upvotes == 1) : ?>
+                        <span>
+                            <?= $upvotes; ?> vote
+                        </span>
+                    <?php else : ?>
+                        <span>
+                            <?= $upvotes; ?> votes
+                        </span>
+                    <?php endif; ?>
+                    <?php if ($numberOfComments == 1) : ?>
+                        <a href="/post.php?id=<?= $post['id']; ?>">
+                            <?= $numberOfComments; ?> comment
+                        </a>
+                    <?php else : ?>
+                        <a href="/post.php?id=<?= $post['id']; ?>">
+                            <?= $numberOfComments; ?> comments
+                        </a>
+                    <?php endif; ?>
+                </div>
             </div>
         <?php endforeach; ?>
     </ol>
