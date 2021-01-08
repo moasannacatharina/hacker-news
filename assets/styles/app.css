@@ -102,6 +102,10 @@ input[type="reset"] {
     width: 12px;
     fill: lightseagreen;
 }
+.upvote-btn-darker {
+    width: 12px;
+    fill: #124e4b;
+}
 /* .post-headline {
     display: flex;
     align-items: center;

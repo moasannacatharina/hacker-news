@@ -45,3 +45,36 @@ dropDownBtn.addEventListener("click", () => {
         dropDownContent.classList.add("dropdown-content-hidden");
     }
 });
+
+const numberOfVotes = document.querySelectorAll(".number-of-votes");
+const upvoteButtons = document.querySelectorAll(".upvote-btn");
+
+upvoteButtons.forEach((upvoteBtn) => {
+    upvoteBtn.addEventListener("click", (e) => {
+        const url = e.currentTarget.dataset.url;
+        fetch(`'../../app/posts/upvote.php?id=${url}'`, {
+            credentials: "include",
+            method: "POST",
+        })
+            .then(function (res) {
+                return res.json();
+            })
+            .then((upvote) => {
+                numberOfVotes.forEach((item) => {
+                    if (item.dataset.url == url) {
+                        if (upvote == 1) {
+                            item.textContent = `${upvote} vote`;
+                        } else {
+                            item.textContent = `${upvote} votes`;
+                        }
+                    }
+                });
+            });
+    });
+});
+
+upvoteButtons.forEach((upvoteBtn) => {
+    upvoteBtn.addEventListener("click", () => {
+        upvoteBtn.classList.toggle("upvote-btn-darker");
+    });
+});
