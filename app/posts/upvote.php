@@ -36,10 +36,10 @@ if (isset($_SESSION['user']['id'])) {
 
         $upvotes = countUpvotes($database, $post_id);
         echo json_encode($upvotes);
-    } else {
-        $_SESSION['error_message'] = 'You have to be logged in to vote.';
-        redirect('/login.php');
-
-        // die(var_dump($upvote));
     }
+} else {
+    $_SESSION['error_message'] = 'You have to be logged in to vote.';
+    redirect('/login.php');
+
+    // die(var_dump($upvote));
 }

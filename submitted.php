@@ -22,6 +22,9 @@ $statement->execute();
 
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+$error_message = "You haven't submitted any posts yet.";
+
+
 ?>
 
 <article class="own-submissions">
@@ -31,6 +34,15 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
         </div><!-- /alert -->
     <?php endif; ?>
     <h1>Your submissions</h1>
+    <?php if (empty($posts)) : ?>
+        <div class="alert alert-danger">
+            <?= $error_message; ?>
+        </div>
+        <p class="create-post-text">
+            Create a post
+            <a href="/submit.php">here</a>
+        </p>
+    <?php endif; ?>
     <ul>
         <?php foreach ($posts as $post) : ?>
             <?php $_SESSION['post'] = $post; ?>

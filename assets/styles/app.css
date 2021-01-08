@@ -146,8 +146,10 @@ form button {
 .create-account-text {
     font-size: 14px;
 }
-.create-account-text a {
+.create-account-text a,
+.create-post-text a {
     color: lightseagreen;
+    text-decoration: underline;
 }
 label {
     margin-top: 10px;

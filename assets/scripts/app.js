@@ -1,6 +1,6 @@
 console.log("Hello World");
 
-// Hamburger menu
+// HAMBURGER MENU
 const menuBtn = document.querySelector(".menu-btn");
 const menuContainer = document.querySelector(".menu-list");
 const closeBtn = document.querySelector(".close-btn");
@@ -18,19 +18,6 @@ closeBtn.addEventListener("click", () => {
     menuBtn.style.display = "block";
 });
 
-// // Adding active state to NEW button and MOST LIKED button on index-page
-// const newBtn = document.querySelector(".new-btn");
-// const mostLikedBtn = document.querySelector(".most-liked-btn");
-
-// newBtn.addEventListener("click", () => {
-//     newBtn.classList.add("active");
-//     mostLikedBtn.classList.remove("active");
-// });
-// mostLikedBtn.addEventListener("click", () => {
-//     newBtn.classList.remove("active");
-//     mostLikedBtn.classList.add("active");
-// });
-
 // DROPDOWN MENU
 
 const dropDownBtn = document.querySelector(".dropbtn");
@@ -46,6 +33,7 @@ dropDownBtn.addEventListener("click", () => {
     }
 });
 
+/// LIKE BUTTON
 const numberOfVotes = document.querySelectorAll(".number-of-votes");
 const upvoteButtons = document.querySelectorAll(".upvote-btn");
 
