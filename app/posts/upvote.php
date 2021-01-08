@@ -20,7 +20,6 @@ if (isset($_SESSION['user']['id'])) {
         $upvote = $statement->fetch();
 
         if ($upvote === false) {
-
             $statement = $database->prepare('INSERT INTO upvotes (post_id, user_id) VALUES(:post_id, :user_id)');
             $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
             $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
