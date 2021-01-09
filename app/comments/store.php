@@ -20,7 +20,6 @@ if (isset($_SESSION['user'])) {
         $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
         $statement->execute();
 
-        // $_SESSION['message'] = 'Your post has been submitted!';
         redirect('/post.php?id=' . $post_id);
     }
 } else {
