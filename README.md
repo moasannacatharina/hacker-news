@@ -1,5 +1,7 @@
 # Hacker News
 
+<img src="https://media.giphy.com/media/LcfBYS8BKhCvK/giphy.gif" width="100%">
+
 ## 👀 About
 
 This is an individual assignment in PHP. Our class has created our own brand new version of the site [Hacker News](https://news.ycombinator.com/news).
