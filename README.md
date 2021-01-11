@@ -70,7 +70,4 @@ This is an individual assignment in PHP. Our class has created our own brand new
 ## 🎈Created by
 
 -   [Moa Berg](https://github.com/moasannacatharina)
-
-## 🌸 License
-
--   [MIT](https://github.com/moasannacatharina/fake-news/blob/main/LICENSE).]
+-   Licensed under [MIT](https://github.com/moasannacatharina/fake-news/blob/main/LICENSE)
