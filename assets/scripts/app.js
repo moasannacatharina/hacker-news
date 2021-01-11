@@ -37,8 +37,6 @@ dropDownBtn.addEventListener("click", () => {
 const numberOfVotes = document.querySelectorAll(".number-of-votes");
 const upvoteButtons = document.querySelectorAll(".upvote-btn");
 
-console.log(upvoteButtons);
-
 upvoteButtons.forEach((upvoteBtn) => {
     upvoteBtn.addEventListener("click", (e) => {
         const url = e.currentTarget.dataset.url;
@@ -66,5 +64,32 @@ upvoteButtons.forEach((upvoteBtn) => {
 upvoteButtons.forEach((upvoteBtn) => {
     upvoteBtn.addEventListener("click", () => {
         upvoteBtn.classList.toggle("upvote-btn-darker");
+    });
+});
+
+// EDIT-COMMENT-BOX. INVISIBLE BY DEFAULT.
+const editCommentBtns = document.querySelectorAll(".edit-comment");
+hiddenCommentForm = document.querySelectorAll(".comment-form-hidden");
+commentContainer = document.querySelectorAll(".comment-content");
+
+editCommentBtns.forEach((editBtn) => {
+    editBtn.addEventListener("click", (e) => {
+        const id = e.currentTarget.dataset.id;
+        const commentId = e.currentTarget.dataset.commentid;
+
+        hiddenCommentForm.forEach((form) => {
+            if (form.dataset.id == id && form.dataset.commentid == commentId) {
+                form.style.display = "block";
+            }
+        });
+
+        commentContainer.forEach((comment) => {
+            if (
+                comment.dataset.id == id &&
+                comment.dataset.commentid == commentId
+            ) {
+                comment.style.display = "none";
+            }
+        });
     });
 });

@@ -11,22 +11,6 @@ $statement->execute();
 
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-// if (isset($_SESSION['user'])) {
-//     foreach ($posts as $post) {
-//         $post_id = $post['id'];
-//         $user_id = $_SESSION['user']['id'];
-
-//         $statement = $database->prepare('SELECT * FROM upvotes WHERE post_id = :post_id AND user_id = :user_id');
-//         $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
-//         $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
-//         $statement->execute();
-//         $upvote = $statement->fetch();
-//     }
-// }
-
-
-
-// die(var_dump($upvote));
 ?>
 
 <article>

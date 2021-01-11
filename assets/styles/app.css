@@ -40,6 +40,7 @@ a {
     padding: 1rem;
     margin-top: 5rem;
     min-height: 80vh;
+    width: 100%;
 }
 .glow {
     font-size: 3rem;
@@ -233,19 +234,41 @@ input {
     margin-bottom: 10px;
     position: relative;
     z-index: -1;
+    padding-top: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .comment-user {
     font-size: 15px;
     color: lightgray;
+    width: unset;
+}
+
+.edit-comment-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 .delete-comment {
-    position: absolute;
+    /* position: absolute;
     top: 0;
-    right: 0;
+    right: 0; */
     color: rgb(226, 125, 84);
     font-weight: bold;
-    /* font-size: 20px; */
+    /* z-index: 9999999; */
+    font-size: 20px;
+}
+
+.edit-symbol {
+    fill: rgb(233, 224, 142);
+    width: 15px;
+    margin-right: 10px;
+}
+
+.comment-form-hidden {
+    display: none;
 }
 /* FOOTER */
 

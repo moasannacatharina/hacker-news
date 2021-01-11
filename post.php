@@ -8,6 +8,7 @@ unset($_SESSION['message']);
 
 
 $post_id = $_GET['id'];
+// die(var_dump($post_id));
 
 $statement = $database->prepare('SELECT posts.id, posts.title, posts.url, posts.description, posts.created_at, posts.user_id, users.email
 FROM posts
@@ -31,6 +32,8 @@ $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
 $statement->execute();
 $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+
+
 $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
 
 
@@ -50,6 +53,11 @@ if (isset($_SESSION['user'])) {
 
 
 <article class="single-post">
+    <?php if ($message !== '') : ?>
+        <div class="alert alert-success">
+            <?= $message; ?>
+        </div><!-- /alert -->
+    <?php endif; ?>
     <div class="poster">
         <?php if (is_file($fileName) && file_exists($fileName)) : ?>
             <img src="<?= $fileName ?>" class="profile-img" />
@@ -124,21 +132,39 @@ if (isset($_SESSION['user'])) {
 </article>
 <article class="comments">
     <?php foreach ($comments as $comment) : ?>
-        <div class="comment">
+        <div class="comment" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>">
             <p class="comment-user">
                 <?= $comment['email'] . ' ' . $comment['created_at']; ?>
             </p>
-            <p class="comment-content">
+            <p class="comment-content" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>">
                 <?= $comment['content']; ?>
             </p>
-            <?php if (isset($_SESSION['user'])) : ?>
-                <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
-                    <a class="delete-comment" href="/app/comments/delete.php?comment-id=<?= $comment['id']; ?>&id=<?= $comment['post_id']; ?>">
+        </div>
+
+        <form action="/app/comments/update.php?id=<?= $comment['post_id']; ?>&comment-id=<?= $comment['id']; ?>" class="comment-form-hidden" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>" method="post">
+            <div class="form-group">
+                <label for="edit">Edit Comment</label>
+                <textarea class="form-control" rows="10" cols="5" type="text" name="edit" id="edit"><?= $comment['content']; ?></textarea>
+                <!-- <small class="form-text text-muted">Write something about yourself</small> -->
+            </div><!-- /form-group -->
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+
+
+        <?php if (isset($_SESSION['user'])) : ?>
+            <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
+                <div class="edit-comment-container">
+                    <button data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>" class="edit-comment">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.947 383.947" class="edit-symbol">
+                            <path d="M0 303.947v80h80l236.053-236.054-80-80zM377.707 56.053L327.893 6.24c-8.32-8.32-21.867-8.32-30.187 0l-39.04 39.04 80 80 39.04-39.04c8.321-8.32 8.321-21.867.001-30.187z" />
+                        </svg>
+                    </button>
+                    <a href="/app/comments/delete.php?comment-id=<?= $comment['id']; ?>&id=<?= $comment['post_id']; ?>" class="delete-comment">
                         X
                     </a>
-                <?php endif; ?>
+                </div>
             <?php endif; ?>
-        </div>
+        <?php endif; ?>
     <?php endforeach; ?>
 </article>
 
