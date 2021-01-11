@@ -37,7 +37,7 @@ $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
 
 
-//Checking if
+// KOLLAR OM ANVÄNDAREN LIKEAT EN POST OCH DÄRIGENOM BESTÄMMA FÄRG PÅ UPVOTE-KNAPPEN
 if (isset($_SESSION['user'])) {
     $post_id = $post['id'];
     $user_id = $_SESSION['user']['id'];

@@ -160,6 +160,8 @@ input {
     height: 30px;
 }
 
+/* SINGLE POST VIEW  */
+
 .delete-post a {
     color: rgb(226, 125, 84);
 }

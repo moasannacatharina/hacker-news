@@ -32,7 +32,7 @@ $post = $statement->fetch();
 
         <div class=" form-group">
             <label for="description">Description</label>
-            <input class="form-control" rows="10" cols="15" type="text" name="description" id="description" value="<?= $post['description']; ?>">
+            <textarea class="form-control" rows="10" cols="15" type="text" name="description" id="description"><?= $post['description']; ?></textarea>
         </div><!-- /form-group -->
 
         <button type="submit" class="btn btn-primary">Save</button>
