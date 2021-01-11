@@ -27,7 +27,7 @@ nav {
     background-color: #7b7a81;
     width: 50%;
     justify-content: center;
-    z-index: -1;
+    z-index: 99;
 }
 
 .close-btn,

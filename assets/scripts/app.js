@@ -37,6 +37,8 @@ dropDownBtn.addEventListener("click", () => {
 const numberOfVotes = document.querySelectorAll(".number-of-votes");
 const upvoteButtons = document.querySelectorAll(".upvote-btn");
 
+console.log(upvoteButtons);
+
 upvoteButtons.forEach((upvoteBtn) => {
     upvoteBtn.addEventListener("click", (e) => {
         const url = e.currentTarget.dataset.url;

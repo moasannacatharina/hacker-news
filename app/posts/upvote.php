@@ -33,6 +33,7 @@ if (isset($_SESSION['user']['id'])) {
             $statement->execute();
         }
 
+        // omvandlar mängden upvotes till json-data som fångas upp i JS.
         $upvotes = countUpvotes($database, $post_id);
         echo json_encode($upvotes);
     }

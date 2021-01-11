@@ -31,9 +31,20 @@ $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
 $statement->execute();
 $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-// die(var_dump($comments));
 $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
-// die(var_dump($post));
+
+
+//Checking if
+if (isset($_SESSION['user'])) {
+    $post_id = $post['id'];
+    $user_id = $_SESSION['user']['id'];
+
+    $statement = $database->prepare('SELECT * FROM upvotes WHERE post_id = :post_id AND user_id = :user_id');
+    $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+    $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $statement->execute();
+    $upvote = $statement->fetch();
+}
 
 ?>
 
@@ -47,14 +58,19 @@ $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
         <?php endif; ?>
         <div class="post-info">
             <div>
-                <button data-url="<?= $post['id']; ?>" class="upvote-btn">
+                <button data-url="<?= $post['id']; ?>" class="upvote-btn
+                <?php if (isset($_SESSION['user'])) : ?>
+                    <?php if ($upvote !== false) : ?>
+                        upvote-btn-darker
+                    <?php endif; ?>
+                <?php endif; ?>">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.171 512.171">
                         <path d="M476.723 216.64L263.305 3.115A10.652 10.652 0 00255.753 0a10.675 10.675 0 00-7.552 3.136L35.422 216.64c-3.051 3.051-3.947 7.637-2.304 11.627a10.67 10.67 0 009.856 6.571h117.333v266.667c0 5.888 4.779 10.667 10.667 10.667h170.667c5.888 0 10.667-4.779 10.667-10.667V234.837h116.885c4.309 0 8.192-2.603 9.856-6.592 1.664-3.989.725-8.554-2.326-11.605z" />
                     </svg>
                 </button>
-                <a href="<?= $post['url']; ?>">
+                <a href="<?= trim($post['url']); ?>">
                     <h3>
-                        <?= $post['title']; ?>
+                        <?= trim($post['title']); ?>
                     </h3>
                 </a>
             </div>

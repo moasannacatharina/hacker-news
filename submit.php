@@ -33,7 +33,7 @@ unset($_SESSION['message']);
 
             <div class="form-group">
                 <label for="description">Description</label>
-                <input class="form-control" rows="10" cols="15" type="text" name="description" id="description" required>
+                <textarea class="form-control" rows="5" cols="5" type="text" name="description" id="description" required></textarea>
             </div><!-- /form-group -->
 
             <button type="submit" class="btn btn-primary">Submit</button>
