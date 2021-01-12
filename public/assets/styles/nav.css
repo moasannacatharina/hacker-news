@@ -1,83 +1,84 @@
 @keyframes smooth {
-    from {
-        width: 0;
-    }
-    to {
-        width: 50%;
-    }
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
+  }
 }
 
 nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: #525057;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #525057;
 }
 
 .menu-list {
-    display: none;
-    padding: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    background-color: #7b7a81;
-    width: 50%;
-    justify-content: center;
-    z-index: 99;
+  display: none;
+  padding: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  background-color: #7b7a81;
+  width: 50%;
+  justify-content: center;
+  z-index: 99;
+  font-size: 18px;
 }
 
 .close-btn,
 .menu-btn {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 25px;
-    height: 25px;
-    margin: 15px;
-    margin-right: 20px;
-    fill: white;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: 25px;
+  margin: 15px;
+  margin-right: 20px;
+  fill: white;
 }
 .close-btn {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 nav ul {
-    padding: 0;
-    margin-top: 2.5rem;
+  padding: 0;
+  margin-top: 2.5rem;
 }
 
 nav button,
 input[type="submit"],
 input[type="reset"] {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 nav ul li {
-    margin: 35px;
-    list-style: none;
+  margin: 35px;
+  list-style: none;
 }
 
 .navbar-brand {
-    margin: 20px;
+  margin: 20px;
 }
 
 .dropdown {
-    position: relative;
+  position: relative;
 }
 
 .dropdown-content-hidden {
-    display: none;
-    /* position: absolute;
+  display: none;
+  /* position: absolute;
     background-color: #7b7a81;
     min-height: 70px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -86,20 +87,20 @@ nav ul li {
 }
 
 .dropdown-content {
-    display: flex;
-    position: absolute;
-    background-color: #525057;
-    min-height: 70px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    flex-direction: column;
-    top: 35px;
-    left: -35px;
-    padding: 10px;
+  display: flex;
+  position: absolute;
+  background-color: #525057;
+  min-height: 70px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  flex-direction: column;
+  top: 35px;
+  left: -35px;
+  padding: 10px;
 }
 
 .dropdown-content a {
-    margin: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

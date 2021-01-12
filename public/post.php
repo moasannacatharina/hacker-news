@@ -136,6 +136,20 @@ if (isset($_SESSION['user'])) {
             <p class="comment-user">
                 <?= $comment['email'] . ' ' . $comment['created_at']; ?>
             </p>
+            <?php if (isset($_SESSION['user'])) : ?>
+                <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
+                    <div class="edit-comment-container">
+                        <button data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>" class="edit-comment">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.947 383.947" class="edit-symbol">
+                                <path d="M0 303.947v80h80l236.053-236.054-80-80zM377.707 56.053L327.893 6.24c-8.32-8.32-21.867-8.32-30.187 0l-39.04 39.04 80 80 39.04-39.04c8.321-8.32 8.321-21.867.001-30.187z" />
+                            </svg>
+                        </button>
+                        <a href="/app/comments/delete.php?comment-id=<?= $comment['id']; ?>&id=<?= $comment['post_id']; ?>" class="delete-comment">
+                            X
+                        </a>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
             <p class="comment-content" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>">
                 <?= $comment['content']; ?>
             </p>
@@ -147,24 +161,11 @@ if (isset($_SESSION['user'])) {
                 <textarea class="form-control" rows="10" cols="5" type="text" name="edit" id="edit"><?= $comment['content']; ?></textarea>
                 <!-- <small class="form-text text-muted">Write something about yourself</small> -->
             </div><!-- /form-group -->
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="edit-comment-save">Save</button>
         </form>
 
 
-        <?php if (isset($_SESSION['user'])) : ?>
-            <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
-                <div class="edit-comment-container">
-                    <button data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>" class="edit-comment">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.947 383.947" class="edit-symbol">
-                            <path d="M0 303.947v80h80l236.053-236.054-80-80zM377.707 56.053L327.893 6.24c-8.32-8.32-21.867-8.32-30.187 0l-39.04 39.04 80 80 39.04-39.04c8.321-8.32 8.321-21.867.001-30.187z" />
-                        </svg>
-                    </button>
-                    <a href="/app/comments/delete.php?comment-id=<?= $comment['id']; ?>&id=<?= $comment['post_id']; ?>" class="delete-comment">
-                        X
-                    </a>
-                </div>
-            <?php endif; ?>
-        <?php endif; ?>
+
     <?php endforeach; ?>
 </article>
 

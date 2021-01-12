@@ -1,112 +1,119 @@
 /* In this file you can add your custom styles. */
 
 .edit-invisible {
-    display: none;
+  display: none;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 @font-face {
-    font-family: "Questrial";
-    src: url("/assets/fonts/Questrial-Regular.woff2") format("woff2"),
-        url("/assets/fonts/Questrial-Regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Questrial";
+  src: url("/assets/fonts/Questrial-Regular.woff2") format("woff2"),
+    url("/assets/fonts/Questrial-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
 @font-face {
-    font-family: "Hacked";
-    src: url("/assets/fonts/HACKED.woff2") format("woff2"),
-        url("/assets/fonts/HACKED.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Hacked";
+  src: url("/assets/fonts/HACKED.woff2") format("woff2"),
+    url("/assets/fonts/HACKED.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
 
 body {
-    font-family: "Questrial", Arial, Helvetica, sans-serif;
-    color: white;
-    background-color: #222326;
-    letter-spacing: 0.5px;
+  font-family: "Questrial", Arial, Helvetica, sans-serif;
+  color: white;
+  background-color: #222326;
+  letter-spacing: 0.5px;
 }
 
 a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .container {
-    padding: 1rem;
-    margin-top: 5rem;
-    min-height: 80vh;
-    width: 100%;
+  padding: 1rem;
+  margin-top: 5rem;
+  min-height: 80vh;
+  width: 100%;
 }
 .glow {
-    font-size: 3rem;
-    font-size: 3rem;
-    font-family: "Hacked", "Questrial", Arial, Helvetica, sans-serif;
-    color: #fff;
-    letter-spacing: 2px;
-    /* text-shadow: 0 0 20px rgb(31, 28, 28), 0 0 9px #32c373, 0 0 7px #39e600,
+  font-size: 3rem;
+  font-size: 3rem;
+  font-family: "Hacked", "Questrial", Arial, Helvetica, sans-serif;
+  color: #fff;
+  letter-spacing: 2px;
+  /* text-shadow: 0 0 20px rgb(31, 28, 28), 0 0 9px #32c373, 0 0 7px #39e600,
         0 0 0px #315038, 0 0 20px #00e63c, 0 0 10px #00e612; */
 }
 
 h1 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 button,
 input[type="submit"],
 input[type="reset"] {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    outline: inherit;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 /**** LIST OF ARTICLES  ****/
-
+.list-item-title {
+  font-size: 18px;
+}
 .new-btn {
-    margin-right: 2rem;
+  margin-right: 2rem;
+}
+
+.new-btn,
+.most-liked-btn {
+  font-size: 18px;
 }
 .content-list,
 .own-submissions {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 .content-list ol,
 .own-submissions ul {
-    padding: 1rem;
+  padding: 1rem;
 }
 .subtext {
-    /* display: flex; */
-    font-size: 14px;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    color: lightgray;
+  /* display: flex; */
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  color: lightgray;
 }
 .subtext a {
-    color: lightgray;
+  color: lightgray;
 }
 
 .subtext #edit-post {
-    margin-left: 10px;
-    color: #26c391;
+  margin-left: 10px;
+  color: #26c391;
 }
 .subtext #delete-post {
-    color: rgb(226, 125, 84);
-    margin-left: 15px;
+  color: rgb(226, 125, 84);
+  margin-left: 15px;
 }
 .upvote-btn {
-    width: 14px;
-    margin-right: 5px;
-    fill: lightseagreen;
+  width: 14px;
+  margin-right: 5px;
+  fill: lightseagreen;
 }
 .upvote-btn-darker {
-    fill: #d492b8;
+  fill: #d492b8;
 }
 /* .post-headline {
     display: flex;
@@ -120,169 +127,184 @@ input[type="reset"] {
 } */
 
 .active {
-    text-decoration: underline;
-    font-weight: bold;
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 /*** FORM  ***/
 form {
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 form div {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 form button {
-    color: lightseagreen;
-    margin-top: 5px;
-    font-weight: bold;
-    font-size: 18px;
+  color: lightseagreen;
+  margin-top: 5px;
+  font-weight: bold;
+  font-size: 18px;
 }
 
 input:focus,
 textarea:focus {
-    outline: none;
-    border: 1px solid #00bcd4;
+  outline: none;
+  border: 1px solid #00bcd4;
 }
 
 #log-in-btn {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .create-account-text {
-    font-size: 14px;
+  font-size: 14px;
 }
 .create-account-text a,
 .create-post-text a {
-    color: lightseagreen;
-    text-decoration: underline;
+  color: lightseagreen;
+  text-decoration: underline;
 }
 label {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 input {
-    height: 30px;
+  height: 30px;
 }
 
 /* SINGLE POST VIEW  */
 
 .delete-post a {
-    color: rgb(226, 125, 84);
+  color: rgb(226, 125, 84);
 }
 
 .post-info p {
-    color: lightgray;
+  color: lightgray;
 }
 
 .post-info .upvote-btn,
 .post-info .upvote-btn-darker {
-    width: 18px;
+  width: 18px;
 }
 .post-info div {
-    display: flex;
+  display: flex;
 }
 .post-info h3 {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 .post-info {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 /* PROFILE  */
 .user-info {
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
 }
 .user-info-text {
-    margin-left: 3rem;
+  margin-left: 3rem;
 }
 .profile-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 .user-info p {
-    color: lightgray;
-    font-style: italic;
+  color: lightgray;
+  font-style: italic;
 }
 /* LIST OF OWN SUBMISSIONS  */
 
 .own-submissions li {
-    font-size: 20px;
+  font-size: 20px;
 }
 .own-submissions li p {
-    font-size: 16px;
-    color: lightgray;
+  font-size: 16px;
+  color: lightgray;
 }
 
 .own-submissions .subtext {
-    color: lightgray;
+  color: lightgray;
 }
 
 /* MESSAGES  */
 
 .alert.alert-success {
-    color: rgb(179, 231, 179);
+  color: rgb(179, 231, 179);
 }
 
 .alert.alert-danger {
-    color: rgb(226, 125, 84);
+  color: rgb(226, 125, 84);
 }
 
 .alert {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 /* COMMENTS  */
 
 .comment {
-    margin-bottom: 10px;
-    position: relative;
-    z-index: -1;
-    padding-top: 10px;
-    padding-right: 10px;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 10px;
+  position: relative;
+  padding-top: 10px;
+  padding-right: 10px;
+  display: flex;
+  flex-direction: column;
+  /* background: rgb(117, 52, 52); */
 }
 
 .comment-user {
-    font-size: 15px;
-    color: lightgray;
-    width: unset;
+  font-size: 15px;
+  color: lightgray;
+  width: unset;
 }
 
 .edit-comment-container {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  z-index: 100000;
+  position: absolute;
+  width: 50px;
+  top: 0;
+  right: 0;
+}
+
+.edit-comment {
+  width: 14px;
+  margin-right: 10px;
 }
 .delete-comment {
-    /* position: absolute;
+  /* position: absolute;
     top: 0;
     right: 0; */
-    color: rgb(226, 125, 84);
-    font-weight: bold;
-    /* z-index: 9999999; */
-    font-size: 20px;
+  color: rgb(226, 125, 84);
+  font-weight: bold;
+  /* z-index: 9999999; */
+  font-size: 20px;
 }
 
 .edit-symbol {
-    fill: rgb(233, 224, 142);
-    width: 15px;
-    margin-right: 10px;
+  fill: rgb(233, 224, 142);
+  width: 15px;
+  margin-right: 10px;
 }
 
 .comment-form-hidden {
-    display: none;
+  display: none;
+  position: relative;
+}
+
+.edit-comment-save {
+  position: absolute;
+  right: 0;
+  padding-right: 10px;
 }
 /* FOOTER */
 
 footer {
-    height: 80px;
-    background-color: black;
-    width: 100%;
+  height: 80px;
+  background-color: black;
+  width: 100%;
 }
