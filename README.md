@@ -45,7 +45,7 @@ This is an individual assignment in PHP. Our class has created our own brand new
 ## 💌 Instructions
 
 1. Clone or fork this repository to your computer.
-2. Navigate to the root of the project directory in your terminal.
+2. Navigate to the project's `public` directory in your terminal.
 3. Start a localhost-server: `php -S localhost: 8000`
 4. Open [localhost:8000](http://localhost:8000) in your browser of choice.
 
