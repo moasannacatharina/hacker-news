@@ -168,12 +168,13 @@ input {
   color: lightgray;
 }
 
-.post-info .upvote-btn,
-.post-info .upvote-btn-darker {
+.post-info .upvote-btn svg,
+.post-info .upvote-btn-darker svg {
   width: 18px;
 }
 .post-info div {
   display: flex;
+  margin-bottom: 10px;
 }
 .post-info h3 {
   margin-left: 5px;
