@@ -85,7 +85,7 @@ input[type="reset"] {
   /* display: flex; */
   font-size: 16px;
   margin-top: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 17px;
   color: lightgray;
 }
 .subtext a {
@@ -329,6 +329,7 @@ hr {
 .delete-account a:last-child {
   color: #26c391;
   text-decoration: underline;
+  text-underline-position: under;
 }
 
 /* FOOTER */
