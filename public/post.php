@@ -165,7 +165,7 @@ if (isset($_SESSION['user'])) {
         </form>
 
 
-
+        <hr>
     <?php endforeach; ?>
 </article>
 

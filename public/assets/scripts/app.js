@@ -1,5 +1,3 @@
-console.log("Hello World");
-
 // HAMBURGER MENU
 const menuBtn = document.querySelector(".menu-btn");
 const menuContainer = document.querySelector(".menu-list");
@@ -88,5 +86,14 @@ editCommentBtns.forEach((editBtn) => {
         comment.style.display = "none";
       }
     });
+  });
+});
+
+//PREVENT DEFAULT EVENT ON LINKS IN FOOTER
+const links = document.querySelectorAll("footer a");
+
+links.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
   });
 });
