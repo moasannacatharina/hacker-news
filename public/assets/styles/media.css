@@ -28,9 +28,10 @@
     height: unset;
     position: fixed;
     top: 0;
-    left: 200px;
+    left: 150px;
     background-color: #525057;
-    width: 25%;
+    width: 40%;
+    justify-content: flex-start;
   }
 
   .navbar-brand {
@@ -77,5 +78,6 @@
   a:hover,
   form button:hover {
     text-decoration: underline;
+    text-underline-position: under;
   }
 }

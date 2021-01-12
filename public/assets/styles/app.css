@@ -71,6 +71,7 @@ input[type="reset"] {
 .new-btn,
 .most-liked-btn {
   font-size: 18px;
+  letter-spacing: 1px;
 }
 .content-list,
 .own-submissions {
@@ -110,6 +111,7 @@ input[type="reset"] {
 
 .active {
   text-decoration: underline;
+  text-underline-position: under;
   font-weight: bold;
 }
 

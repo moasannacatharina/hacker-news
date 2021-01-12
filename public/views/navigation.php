@@ -18,6 +18,8 @@
         <li class="nav-item
         <?php if ($_SERVER['PHP_SELF'] === '/index.php') : ?>
                 active
+        <?php elseif ($_SERVER['PHP_SELF'] === '/most-upvoted.php') : ?>
+                active
         <?php endif; ?>">
             <a class="nav-link" href="/index.php">Home</a>
         </li>
