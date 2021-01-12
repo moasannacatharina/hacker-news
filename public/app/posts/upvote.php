@@ -40,6 +40,4 @@ if (isset($_SESSION['user']['id'])) {
 } else {
     $_SESSION['error_message'] = 'You have to be logged in to vote.';
     redirect('/login.php');
-
-    // die(var_dump($upvote));
 }

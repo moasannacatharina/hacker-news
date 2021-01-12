@@ -46,49 +46,56 @@ $fileName = 'app/users/images/' . $_SESSION['user']['id'] . '.jpg';
         </div>
     </div>
 
-    <form action="app/users/update.php" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            <label for="image">Upload profile image</label>
-            <input class="form-control" type="file" name="image" id="image" accepts=".jpg" />
-            <!-- <small class="form-text text-muted">Choose a PNG image to upload.</small> -->
-        </div><!-- /form-group -->
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
+    <section class="update-profile">
+        <form action="app/users/update.php" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image">Upload profile image</label>
+                <input class="form-control" type="file" name="image" id="image" accepts=".jpg" />
+                <!-- <small class="form-text text-muted">Choose a PNG image to upload.</small> -->
+            </div><!-- /form-group -->
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
 
-    <form action="app/users/update.php" method="post">
-        <div class="form-group">
-            <label for="biography">Update your bio</label>
-            <textarea class="form-control" rows="5" cols="5" type="text" name="bio" id="bio"><?= $_SESSION['user']['bio']; ?></textarea>
-            <!-- <small class="form-text text-muted">Write something about yourself</small> -->
-        </div><!-- /form-group -->
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
+        <form action="app/users/update.php" method="post">
+            <div class="form-group">
+                <label for="biography">Update your bio</label>
+                <textarea class="form-control" rows="5" cols="5" type="text" name="bio" id="bio"><?= $_SESSION['user']['bio']; ?></textarea>
+                <!-- <small class="form-text text-muted">Write something about yourself</small> -->
+            </div><!-- /form-group -->
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
 
-    <form action="app/users/update.php" method="post">
-        <div class="form-group">
-            <label for="email">Change email address</label>
-            <input class="form-control" type="email" name="email" id="email" placeholder="<?= $_SESSION['user']['email']; ?>" />
-            <!-- <small class="form-text text-muted">Edit your email address here.</small> -->
-        </div><!-- /form-group -->
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
+        <form action="app/users/update.php" method="post">
+            <div class="form-group">
+                <label for="email">Change email address</label>
+                <input class="form-control" type="email" name="email" id="email" placeholder="<?= $_SESSION['user']['email']; ?>" />
+                <!-- <small class="form-text text-muted">Edit your email address here.</small> -->
+            </div><!-- /form-group -->
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
 
-    <form action="app/users/update.php" method="post">
-        <div class="form-group">
-            <label for="password">Update password</label>
-            <input class="form-control" type="password" name="new_password" id="new_password" />
-            <!-- <small class="form-text text-muted">Edit your password here.</small> -->
-        </div><!-- /form-group -->
-        <div class="form-group">
-            <label for="password">Confirm new password</label>
-            <input class="form-control" type="password" name="confirm_password" id="confirm_password" />
-            <!-- <small class="form-text text-muted">Confirm your password here.</small> -->
-        </div><!-- /form-group -->
-        <button type="submit" class="btn btn-primary">Save</button>
-    </form>
-    <a href="/submitted.php?id=<?= $_SESSION['user']['id']; ?>">
-        Submissions
-    </a>
+        <form action="app/users/update.php" method="post">
+            <div class="form-group">
+                <label for="password">Update password</label>
+                <input class="form-control" type="password" name="new_password" id="new_password" />
+                <!-- <small class="form-text text-muted">Edit your password here.</small> -->
+            </div><!-- /form-group -->
+            <div class="form-group">
+                <label for="password">Confirm new password</label>
+                <input class="form-control" type="password" name="confirm_password" id="confirm_password" />
+                <!-- <small class="form-text text-muted">Confirm your password here.</small> -->
+            </div><!-- /form-group -->
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </section>
+    <div class="user-links">
+        <a href="/submitted.php?id=<?= $_SESSION['user']['id']; ?>">
+            Submissions
+        </a>
+        <a href="/delete-account.php?id=<?= $_SESSION['user']['id']; ?>">
+            Delete account
+        </a>
+    </div>
 
 </article>
 

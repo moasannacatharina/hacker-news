@@ -162,6 +162,7 @@ if (isset($_SESSION['user'])) {
                 <!-- <small class="form-text text-muted">Write something about yourself</small> -->
             </div><!-- /form-group -->
             <button type="submit" class="edit-comment-save">Save</button>
+            <a href="/post.php?id=<?= $post_id ?>" class="edit-comment-cancel">Cancel</a>
         </form>
 
 

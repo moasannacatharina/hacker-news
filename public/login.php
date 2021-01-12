@@ -37,6 +37,8 @@ unset($_SESSION['message']);
         <button type="submit" class="btn btn-primary" id="log-in-btn">Login</button>
         <p class="create-account-text">Don't have an account? Create an account <a href="/register.php">here</a></p>
     </form>
+
+
 </article>
 
 <?php require __DIR__ . '/views/footer.php'; ?>

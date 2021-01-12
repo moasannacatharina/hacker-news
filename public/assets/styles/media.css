@@ -1,7 +1,23 @@
 @media screen and (min-width: 700px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.1rem;
+  }
+  .container {
+    width: 50%;
+    padding-top: 7rem;
+    margin-top: unset;
+    background-color: #222326;
+    min-height: 90vh;
+    margin-left: 10rem;
+  }
   input,
   textarea {
     width: 100%;
+  }
+
+  input#image.form-control {
   }
 
   nav {
@@ -34,10 +50,6 @@
     flex-direction: column;
   }
 
-  .comments,
-  .single-post {
-    width: 50%;
-  }
   .comment-form-hidden {
     position: relative;
   }
@@ -46,12 +58,18 @@
     right: 0;
     padding-right: 10px;
   }
-  /* .dropdown:hover .dropdown-content {
-        display: flex;
-        align-items: center;
-    }
 
-    .dropdown:hover a:first-child {
-        background-color: #7b7a81;
-    } */
+  .profile-img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .list-item-title {
+    font-size: 1.1rem;
+  }
+
+  a:hover,
+  form button:hover {
+    text-decoration: underline;
+  }
 }

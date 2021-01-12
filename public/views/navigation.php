@@ -41,7 +41,7 @@
                         </button>
                         <div class="dropdown-content-hidden">
                             <a class="nav-link" href="/user.php?id=<?= $_SESSION['user']['id'] ?>">
-                                Your profile
+                                My profile
                             </a>
                             <a class="navlink" href="/submitted.php?id=<?= $_SESSION['user']['id']; ?>">
                                 Submissions
