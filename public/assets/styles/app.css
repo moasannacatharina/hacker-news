@@ -94,18 +94,19 @@ input[type="reset"] {
 
 .subtext #edit-post {
     margin-left: 10px;
+    color: #26c391;
 }
 .subtext #delete-post {
     color: rgb(226, 125, 84);
     margin-left: 15px;
 }
 .upvote-btn {
-    width: 12px;
+    width: 14px;
+    margin-right: 5px;
     fill: lightseagreen;
 }
 .upvote-btn-darker {
-    width: 12px;
-    fill: #124e4b;
+    fill: #d492b8;
 }
 /* .post-headline {
     display: flex;
@@ -137,6 +138,12 @@ form button {
     margin-top: 5px;
     font-weight: bold;
     font-size: 18px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border: 1px solid #00bcd4;
 }
 
 #log-in-btn {
@@ -172,7 +179,7 @@ input {
 
 .post-info .upvote-btn,
 .post-info .upvote-btn-darker {
-    width: 24px;
+    width: 18px;
 }
 .post-info div {
     display: flex;
