@@ -33,7 +33,6 @@ $statement->execute();
 $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
-
 $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
 
 
@@ -60,9 +59,9 @@ if (isset($_SESSION['user'])) {
     <?php endif; ?>
     <div class="poster">
         <?php if (is_file($fileName) && file_exists($fileName)) : ?>
-            <img src="<?= $fileName ?>" class="profile-img" />
+            <img src="<?= $fileName ?>" class="profile-img" alt="profile image of <?= $post['email'] ?>" />
         <?php else : ?>
-            <img src="/app/users/images/avatar.png" class="profile-img" />
+            <img src="/app/users/images/avatar.png" class="profile-img" alt="default avatar image" />
         <?php endif; ?>
         <div class="post-info">
             <div>

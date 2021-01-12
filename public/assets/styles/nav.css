@@ -46,7 +46,7 @@ nav {
   width: 20px;
   height: 20px;
 }
-nav ul {
+.menu-list ul {
   padding: 0;
   margin-top: 2.5rem;
 }
@@ -63,7 +63,7 @@ input[type="reset"] {
   outline: inherit;
 }
 
-nav ul li {
+.menu-list ul li {
   margin: 35px;
   list-style: none;
 }

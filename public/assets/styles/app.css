@@ -221,6 +221,14 @@ input {
   display: flex;
   flex-direction: column;
 }
+
+.user-links a {
+  margin-top: 10px;
+}
+
+.user-links a:last-child {
+  color: rgb(226, 125, 84);
+}
 /* LIST OF OWN SUBMISSIONS  */
 
 .own-submissions li {
@@ -313,6 +321,23 @@ input {
   font-size: 16px;
   color: rgb(226, 125, 84);
 }
+
+/* DELETE ACCOUNT  */
+.delete-account h2 {
+  color: rgb(226, 125, 84);
+  margin: 10px;
+}
+.delete-account p {
+  margin: 10px;
+}
+.delete-account a {
+  margin: 10px;
+}
+.delete-account a:last-child {
+  color: #26c391;
+  text-decoration: underline;
+}
+
 /* FOOTER */
 
 footer {

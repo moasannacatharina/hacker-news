@@ -26,9 +26,15 @@
   .menu-list {
     display: flex;
     height: unset;
-    position: unset;
+    position: fixed;
+    top: 0;
+    left: 200px;
     background-color: #525057;
-    width: unset;
+    width: 25%;
+  }
+
+  .navbar-brand {
+    font-size: 18px;
   }
 
   .menu-list ul {
@@ -37,7 +43,7 @@
     margin-top: unset;
   }
 
-  nav ul li {
+  .menu-list ul li {
     margin: 20px;
   }
   .menu-btn,

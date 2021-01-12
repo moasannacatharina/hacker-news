@@ -32,7 +32,7 @@ $fileName = 'app/users/images/' . $_SESSION['user']['id'] . '.jpg';
     </div>
     <div class="user-info">
         <?php if (is_file($fileName) && file_exists($fileName)) : ?>
-            <img src="<?= $fileName ?>" class="profile-img" />
+            <img src="<?= $fileName ?>" class="profile-img" alt="profile image of <?= $_SESSION['user']['email'] ?>" />
         <?php else : ?>
             <img src="/app/users/images/avatar.png" class="profile-img" />
         <?php endif; ?>

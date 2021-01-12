@@ -9,7 +9,7 @@ if (!isset($_SESSION["user"]) || $_SESSION["authenticated"] !== true) {
 $id = $_SESSION['user']['id'];
 ?>
 
-<article>
+<article class="delete-account">
     <h2>
         Are you sure you want to delete your account?
     </h2>
@@ -23,3 +23,5 @@ $id = $_SESSION['user']['id'];
         Delete account
     </a>
 </article>
+
+<?php require __DIR__ . '/views/footer.php'; ?>
