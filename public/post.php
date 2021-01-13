@@ -149,9 +149,7 @@ $time = $post['created_at'];
 </article>
 <article class="comments">
     <?php foreach ($comments as $comment) : ?>
-
         <!-- ALL COMMENTS IN A LOOP  -->
-
         <div class="comment" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>">
             <p class="comment-user">
                 <?= $comment['email'] . ' ' . convertTime(strtotime($comment['created_at'])); ?>
@@ -212,12 +210,12 @@ $time = $post['created_at'];
                 <?php endif; ?>
             <?php endforeach; ?>
 
-            <button class="reply-btn" data-id="<?= $reply['id']; ?>">
+            <button class="reply-btn" data-id="<?= $comment['id']; ?>">
                 Reply
             </button>
 
             <!-- HIDDEN FORM TO REPLY TO COMMENT  -->
-            <form action=" /app/comments/store.php?id=<?= $comment['post_id']; ?>&comment-id=<?= $comment['id']; ?>" class="reply-form-hidden" data-id="<?= $reply['id']; ?>" method="post">
+            <form action=" /app/comments/store.php?id=<?= $comment['post_id']; ?>&comment-id=<?= $comment['id']; ?>" class="reply-form-hidden" data-id="<?= $comment['id']; ?>" method="post">
                 <div class="form-group">
                     <label for="reply">Add Comment</label>
                     <textarea class="form-control" rows="10" cols="5" type="text" name="reply" id="reply"></textarea>

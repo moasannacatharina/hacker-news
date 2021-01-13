@@ -126,10 +126,9 @@ replyBtns.forEach((replyBtn) => {
   replyBtn.addEventListener("click", (e) => {
     console.log(replyBtn);
     const id = e.currentTarget.dataset.id;
-    const commentId = e.currentTarget.dataset.commentid;
 
     hiddenReplyForm.forEach((form) => {
-      if (form.dataset.id == id && form.dataset.commentid == commentId) {
+      if (form.dataset.id == id) {
         form.style.display = "block";
       }
     });

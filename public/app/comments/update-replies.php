@@ -8,7 +8,6 @@ $_SESSION['message'] = '';
 
 if (isset($_SESSION['user'])) {
     if (isset($_POST['edit-reply'])) {
-
         $comment = filter_var($_POST['edit-reply'], FILTER_SANITIZE_STRING);
         $reply_id = $_GET['id'];
         $post_id = $_GET['post-id'];
