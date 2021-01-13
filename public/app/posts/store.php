@@ -12,7 +12,7 @@ if (isset($_SESSION['user'])) {
         $title = trim(filter_var($_POST['title'], FILTER_SANITIZE_STRING));
         $url = trim(filter_var($_POST['url'], FILTER_SANITIZE_URL));
         $description = trim(filter_var($_POST['description'], FILTER_SANITIZE_STRING));
-        $created_at = date("Y-m-d");
+        $created_at = date("Y-m-d H:i:s");
         $id = $_SESSION['user']['id'];
 
 

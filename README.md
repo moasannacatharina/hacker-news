@@ -64,7 +64,7 @@ This is an individual assignment in PHP. Our class has created our own brand new
 ## 👩‍💻 Tested by
 
 - [Amanda Fager](https://github.com/amandafager)
-- Person 2
+- [Dante Mogrim](https://github.com/mogrim-91)
 
 ## 🍭 Code Review
 

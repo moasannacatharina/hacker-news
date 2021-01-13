@@ -48,6 +48,8 @@ if (isset($_SESSION['user'])) {
     $upvote = $statement->fetch();
 }
 
+$time = $post['created_at'];
+
 ?>
 
 
@@ -115,7 +117,7 @@ if (isset($_SESSION['user'])) {
             <?= $post['email']; ?>
         </p>
         <p>
-            <?= $post['created_at']; ?>
+            <?= humanTiming(strtotime($time)); ?>
         </p>
 
     </div>
