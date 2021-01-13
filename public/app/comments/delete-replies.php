@@ -9,16 +9,16 @@ if (!isset($_SESSION["user"]) || $_SESSION["authenticated"] !== true) {
     exit;
 } else {
     $post_id = $_GET['id'];
-    $comment_id = $_GET['comment-id'];
+    $reply_id = $_GET['reply-id'];
     $user_id = $_SESSION['user']['id'];
 
-    $statement = $database->prepare('DELETE FROM comments WHERE id = :id AND user_id = :user_id');
-    $statement->bindParam(':id', $comment_id, PDO::PARAM_INT);
+    $statement = $database->prepare('DELETE FROM replies WHERE id = :id AND user_id = :user_id AND post_id = :post_id');
+    $statement->bindParam(':id', $reply_id, PDO::PARAM_INT);
     $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+    $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
     $statement->execute();
 
-    // $statement = $database->query('SELECT * FROM posts WHERE id = :post_id');
-    // $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 
     $_SESSION['message'] = 'Your comment has been deleted.';
 

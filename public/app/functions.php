@@ -33,11 +33,15 @@ function countComments($database, int $postId)
     return $numberOfComments['COUNT(*)'];
 }
 
-function humanTiming($time)
+function convertTime($time)
 {
     $time = time() - $time; // to get the time since that moment
-    $time = ($time < 1) ? 1 : $time;
-    $tokens = array(
+    if ($time < 1) {
+        $time = 1;
+    } else {
+        $time = $time;
+    }
+    $tokens = [
         31536000 => 'year',
         2592000 => 'month',
         604800 => 'week',
@@ -45,13 +49,13 @@ function humanTiming($time)
         3600 => 'hour',
         60 => 'minute',
         1 => 'second'
-    );
+    ];
 
-    foreach ($tokens as $unit => $text) {
-        if ($time < $unit) {
+    foreach ($tokens as $token => $text) {
+        if ($time < $token) {
             continue;
         }
-        $numberOfUnits = floor($time / $unit);
-        return $numberOfUnits . ' ' . $text . (($numberOfUnits > 1) ? 's' : '');
+        $numberOfTokens = floor($time / $token);
+        return $numberOfTokens . ' ' . $text . (($numberOfTokens > 1) ? 's' : '');
     }
 }

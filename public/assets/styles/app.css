@@ -124,7 +124,8 @@ form div {
   flex-direction: column;
 }
 
-form button {
+form button,
+.reply-btn {
   color: lightseagreen;
   margin-top: 5px;
   font-weight: bold;
@@ -266,14 +267,31 @@ input {
   flex-direction: column;
   /* background: rgb(117, 52, 52); */
 }
-
+.comment-content,
+.reply-content {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
 .comment-user {
   font-size: 15px;
   color: lightgray;
   width: unset;
 }
+.reply-container {
+  position: relative;
+  margin-left: 2rem;
+}
 
-.edit-comment-container {
+.reply-btn {
+  font-size: 16px;
+}
+
+.reply-content {
+  font-size: 14px;
+}
+.edit-comment-container,
+.edit-reply-container {
   display: flex;
   /* z-index: 100000; */
   position: absolute;
@@ -282,7 +300,8 @@ input {
   right: 0;
 }
 
-.edit-comment {
+.edit-comment,
+.edit-reply {
   width: 14px;
   margin-right: 15px;
 }
@@ -298,7 +317,9 @@ input {
   margin-right: 10px;
 }
 
-.comment-form-hidden {
+.comment-form-hidden,
+.reply-form-hidden,
+.edit-reply-form-hidden {
   display: none;
   position: relative;
   margin-bottom: 30px;

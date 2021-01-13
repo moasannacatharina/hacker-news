@@ -55,7 +55,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
             <div class="subtext">
                 <p>
                     Posted
-                    <?= humanTiming(strtotime($post['created_at'])); ?>
+                    <?= convertTime(strtotime($post['created_at'])); ?>
                     ago.
                 </p>
                 <p>

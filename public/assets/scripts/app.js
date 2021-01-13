@@ -91,6 +91,51 @@ editCommentBtns.forEach((editBtn) => {
   });
 });
 
+// EDIT REPLY-BUTTON
+
+const editReplyBtns = document.querySelectorAll(".edit-reply");
+const editHiddenReplyForm = document.querySelectorAll(
+  ".edit-reply-form-hidden"
+);
+const replyContainer = document.querySelectorAll(".reply-content");
+
+editReplyBtns.forEach((editBtn) => {
+  editBtn.addEventListener("click", (e) => {
+    const id = e.currentTarget.dataset.id;
+
+    editHiddenReplyForm.forEach((form) => {
+      if (form.dataset.id == id) {
+        form.style.display = "block";
+      }
+    });
+
+    replyContainer.forEach((comment) => {
+      if (comment.dataset.id == id) {
+        comment.style.display = "none";
+      }
+    });
+  });
+});
+
+// REPLY BUTTON
+
+const replyBtns = document.querySelectorAll(".reply-btn");
+const hiddenReplyForm = document.querySelectorAll(".reply-form-hidden");
+
+replyBtns.forEach((replyBtn) => {
+  replyBtn.addEventListener("click", (e) => {
+    console.log(replyBtn);
+    const id = e.currentTarget.dataset.id;
+    const commentId = e.currentTarget.dataset.commentid;
+
+    hiddenReplyForm.forEach((form) => {
+      if (form.dataset.id == id && form.dataset.commentid == commentId) {
+        form.style.display = "block";
+      }
+    });
+  });
+});
+
 //PREVENT DEFAULT EVENT ON LINKS IN FOOTER
 const links = document.querySelectorAll("footer a");
 

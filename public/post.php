@@ -32,6 +32,20 @@ $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
 $statement->execute();
 $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 
+$statement = $database->prepare('SELECT replies.id, replies.content, replies.created_at, replies.comment_id, replies.post_id, replies.user_id, users.email
+FROM replies
+INNER JOIN users
+ON replies.user_id = users.id
+WHERE replies.post_id = :post_id
+ORDER BY replies.id ASC');
+
+
+$statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
+$statement->execute();
+$replies = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+// die(var_dump($replies));
+
 
 $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
 
@@ -52,7 +66,7 @@ $time = $post['created_at'];
 
 ?>
 
-
+<!-- SINGLE POST  -->
 <article class="single-post">
     <?php if ($message !== '') : ?>
         <div class="alert alert-success">
@@ -117,26 +131,30 @@ $time = $post['created_at'];
             <?= $post['email']; ?>
         </p>
         <p>
-            <?= humanTiming(strtotime($time)); ?>
+            <?= convertTime(strtotime($time)); ?>
             ago
         </p>
 
     </div>
 
+    <!-- FORM TO POST COMMENT  -->
+
     <form action="app/comments/store.php?id=<?= $post['id']; ?>" method="post">
         <div class="form-group">
             <label for="comment">Comment</label>
             <textarea class="form-control" rows="5" cols="5" type="text" name="comment" id="comment"></textarea>
-            <!-- <small class="form-text text-muted">Write something about yourself</small> -->
         </div><!-- /form-group -->
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </article>
 <article class="comments">
     <?php foreach ($comments as $comment) : ?>
+
+        <!-- ALL COMMENTS IN A LOOP  -->
+
         <div class="comment" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>">
             <p class="comment-user">
-                <?= $comment['email'] . ' ' . $comment['created_at']; ?>
+                <?= $comment['email'] . ' ' . convertTime(strtotime($comment['created_at'])); ?>
             </p>
             <?php if (isset($_SESSION['user'])) : ?>
                 <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
@@ -146,7 +164,7 @@ $time = $post['created_at'];
                                 <path d="M0 303.947v80h80l236.053-236.054-80-80zM377.707 56.053L327.893 6.24c-8.32-8.32-21.867-8.32-30.187 0l-39.04 39.04 80 80 39.04-39.04c8.321-8.32 8.321-21.867.001-30.187z" />
                             </svg>
                         </button>
-                        <a href="/app/comments/delete.php?comment-id=<?= $comment['id']; ?>&id=<?= $comment['post_id']; ?>" class="delete-comment">
+                        <a href="/app/comments/delete-comment.php?comment-id=<?= $comment['id']; ?>&id=<?= $comment['post_id']; ?>" class="delete-comment">
                             X
                         </a>
                     </div>
@@ -155,9 +173,63 @@ $time = $post['created_at'];
             <p class="comment-content" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>">
                 <?= $comment['content']; ?>
             </p>
+
+            <!-- REPLIES TO ONE COMMENT IN A LOOP  -->
+            <?php foreach ($replies as $reply) : ?>
+                <?php if ($reply['comment_id'] === $comment['id']) : ?>
+                    <div class="reply-container">
+                        <p class="comment-user">
+                            <?= $reply['email'] . ' ' . convertTime(strtotime($reply['created_at'])); ?>
+                        </p>
+                        <?php if (isset($_SESSION['user'])) : ?>
+                            <?php if ($reply['user_id'] === $_SESSION['user']['id']) : ?>
+                                <div class="edit-reply-container">
+                                    <button data-id="<?= $reply['id']; ?>" class="edit-reply">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 383.947 383.947" class="edit-symbol">
+                                            <path d="M0 303.947v80h80l236.053-236.054-80-80zM377.707 56.053L327.893 6.24c-8.32-8.32-21.867-8.32-30.187 0l-39.04 39.04 80 80 39.04-39.04c8.321-8.32 8.321-21.867.001-30.187z" />
+                                        </svg>
+                                    </button>
+                                    <a href="/app/comments/delete-replies.php?reply-id=<?= $reply['id']; ?>&id=<?= $reply['post_id']; ?>" class="delete-comment">
+                                        X
+                                    </a>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <p class="reply-content" data-id="<?= $reply['id']; ?>">
+                            <?= $reply['content']; ?>
+                        </p>
+
+                        <!-- HIDDEN FORM TO EDIT REPLY TO COMMENT  -->
+                        <form action="/app/comments/update-replies.php?id=<?= $reply['id']; ?>&post-id=<?= $reply['post_id']; ?>" class="edit-reply-form-hidden" data-id="<?= $reply['id']; ?>" method="post">
+                            <div class="form-group">
+                                <label for="edit-reply">Edit Comment</label>
+                                <textarea class="form-control" rows="10" cols="5" type="text" name="edit-reply" id="edit-reply"><?= $reply['content']; ?></textarea>
+                            </div><!-- /form-group -->
+                            <button type="submit" class="edit-comment-save">Save</button>
+                            <a href="/post.php?id=<?= $post_id ?>" class="edit-comment-cancel">Cancel</a>
+                        </form>
+                    </div>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <button class="reply-btn" data-id="<?= $reply['id']; ?>">
+                Reply
+            </button>
+
+            <!-- HIDDEN FORM TO REPLY TO COMMENT  -->
+            <form action=" /app/comments/store.php?id=<?= $comment['post_id']; ?>&comment-id=<?= $comment['id']; ?>" class="reply-form-hidden" data-id="<?= $reply['id']; ?>" method="post">
+                <div class="form-group">
+                    <label for="reply">Add Comment</label>
+                    <textarea class="form-control" rows="10" cols="5" type="text" name="reply" id="reply"></textarea>
+                </div><!-- /form-group -->
+                <button type="submit" class="edit-comment-save">Save</button>
+                <a href="/post.php?id=<?= $post_id ?>" class="edit-comment-cancel">Cancel</a>
+            </form>
+
         </div>
 
-        <form action="/app/comments/update.php?id=<?= $comment['post_id']; ?>&comment-id=<?= $comment['id']; ?>" class="comment-form-hidden" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>" method="post">
+        <!-- EDIT COMMENT FORM  -->
+        <form action="/app/comments/update-comment.php?id=<?= $comment['post_id']; ?>&comment-id=<?= $comment['id']; ?>" class="comment-form-hidden" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>" method="post">
             <div class="form-group">
                 <label for="edit">Edit Comment</label>
                 <textarea class="form-control" rows="10" cols="5" type="text" name="edit" id="edit"><?= $comment['content']; ?></textarea>
@@ -169,6 +241,7 @@ $time = $post['created_at'];
 
 
         <hr>
+
     <?php endforeach; ?>
 </article>
 
