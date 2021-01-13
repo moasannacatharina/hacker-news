@@ -59,7 +59,6 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
             </li>
             <div class="subtext">
                 <p>
-                    Posted
                     <?= convertTime(strtotime($post['created_at'])); ?>
                     ago.
                 </p>

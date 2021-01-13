@@ -44,6 +44,7 @@ $error_message = "You haven't submitted any posts yet.";
         </p>
     <?php endif; ?>
     <ul>
+        <!-- LIST OF OWN POSTS  -->
         <?php foreach ($posts as $post) : ?>
             <?php $_SESSION['post'] = $post; ?>
             <li class="submitted-post">
@@ -55,7 +56,7 @@ $error_message = "You haven't submitted any posts yet.";
                 </p>
             </li>
             <div class="subtext">
-                <?= $post['created_at']; ?>
+                <?= convertTime(strtotime($post['created_at'])); ?> ago
                 <a href="/edit-post.php?id=<?= $post['id']; ?>" id="edit-post">
                     Edit
                 </a>

@@ -21,6 +21,8 @@ unset($_SESSION['message']);
             <?= $message; ?>
         </div><!-- /alert -->
     <?php endif; ?>
+
+    <!-- LOGIN FORM  -->
     <form action="app/users/login.php" method="post">
         <div class="form-group">
             <label for="email">Email</label>

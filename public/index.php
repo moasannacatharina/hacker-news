@@ -2,7 +2,7 @@
 <?php require __DIR__ . '/views/header.php'; ?>
 <?php
 
-$statement = $database->prepare('SELECT posts.id, posts.title, posts.url, posts.description, posts.created_at, posts.user_id, users.email
+$statement = $database->prepare('SELECT posts.*, users.email
 FROM posts
 INNER JOIN users
 ON posts.user_id = users.id
@@ -54,7 +54,6 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
             </li>
             <div class="subtext">
                 <p>
-                    Posted
                     <?= convertTime(strtotime($post['created_at'])); ?>
                     ago.
                 </p>

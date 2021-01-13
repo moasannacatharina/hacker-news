@@ -10,7 +10,7 @@ unset($_SESSION['message']);
 $post_id = $_GET['id'];
 // die(var_dump($post_id));
 
-$statement = $database->prepare('SELECT posts.id, posts.title, posts.url, posts.description, posts.created_at, posts.user_id, users.email
+$statement = $database->prepare('SELECT posts.*, users.email
 FROM posts
 INNER JOIN users
 ON posts.user_id = users.id
@@ -21,7 +21,7 @@ $statement->execute();
 $post = $statement->fetch();
 
 
-$statement = $database->prepare('SELECT comments.id, comments.content, comments.created_at, comments.post_id, comments.user_id, users.email
+$statement = $database->prepare('SELECT comments.*, users.email
 FROM comments
 INNER JOIN users
 ON comments.user_id = users.id
@@ -32,7 +32,7 @@ $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
 $statement->execute();
 $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-$statement = $database->prepare('SELECT replies.id, replies.content, replies.created_at, replies.comment_id, replies.post_id, replies.user_id, users.email
+$statement = $database->prepare('SELECT replies.*, users.email
 FROM replies
 INNER JOIN users
 ON replies.user_id = users.id
@@ -43,9 +43,6 @@ ORDER BY replies.id ASC');
 $statement->bindParam(':post_id', $post_id, PDO::PARAM_INT);
 $statement->execute();
 $replies = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-// die(var_dump($replies));
-
 
 $fileName = 'app/users/images/' . $post['user_id'] . '.jpg';
 
@@ -153,6 +150,7 @@ $time = $post['created_at'];
         <div class="comment" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>">
             <p class="comment-user">
                 <?= $comment['email'] . ' ' . convertTime(strtotime($comment['created_at'])); ?>
+                ago
             </p>
             <?php if (isset($_SESSION['user'])) : ?>
                 <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
@@ -178,8 +176,10 @@ $time = $post['created_at'];
                     <div class="reply-container">
                         <p class="comment-user">
                             <?= $reply['email'] . ' ' . convertTime(strtotime($reply['created_at'])); ?>
+                            ago
                         </p>
                         <?php if (isset($_SESSION['user'])) : ?>
+                            <!-- SHOW EDIT AND DELETE BUTTON IF USER IS OWNER OF COMMENT  -->
                             <?php if ($reply['user_id'] === $_SESSION['user']['id']) : ?>
                                 <div class="edit-reply-container">
                                     <button data-id="<?= $reply['id']; ?>" class="edit-reply">

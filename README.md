@@ -45,6 +45,7 @@ This is an individual assignment in PHP. Our class has created our own brand new
 ## 🥳 Extra features
 
 - Delete your account along with all your posts, user info, upvotes and comments.
+- Reply to comments
 
 ## 💌 Instructions
 
