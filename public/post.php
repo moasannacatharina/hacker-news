@@ -118,6 +118,7 @@ $time = $post['created_at'];
         </p>
         <p>
             <?= humanTiming(strtotime($time)); ?>
+            ago
         </p>
 
     </div>
