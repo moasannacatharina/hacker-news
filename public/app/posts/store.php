@@ -26,8 +26,11 @@ if (isset($_SESSION['user'])) {
         $statement->execute();
 
         $_SESSION['message'] = 'Your post has been submitted!';
+
+        $statement = $database->query('SELECT * FROM posts ORDER BY id DESC LIMIT 1');
+        $post = $statement->fetch();
     }
-    redirect('/submit.php');
+    redirect('/post.php?id=' . $post['id']);
 } else {
     $_SESSION['message'] = 'You have to be logged in to post.';
     redirect('/login.php');

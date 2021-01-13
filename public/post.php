@@ -170,6 +170,18 @@ $time = $post['created_at'];
                 <?= $comment['content']; ?>
             </p>
 
+            <!-- EDIT COMMENT FORM  -->
+            <form action="/app/comments/update-comment.php?id=<?= $comment['post_id']; ?>&comment-id=<?= $comment['id']; ?>" class="comment-form-hidden" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>" method="post">
+                <div class="form-group">
+                    <label for="edit">Edit Comment</label>
+                    <textarea class="form-control" rows="10" cols="5" type="text" name="edit" id="edit"><?= $comment['content']; ?></textarea>
+                    <!-- <small class="form-text text-muted">Write something about yourself</small> -->
+                </div><!-- /form-group -->
+                <button type="submit" class="edit-comment-save">Save</button>
+                <a href="/post.php?id=<?= $post_id ?>" class="edit-comment-cancel">Cancel</a>
+            </form>
+
+
             <!-- REPLIES TO ONE COMMENT IN A LOOP  -->
             <?php foreach ($replies as $reply) : ?>
                 <?php if ($reply['comment_id'] === $comment['id']) : ?>
@@ -226,16 +238,6 @@ $time = $post['created_at'];
 
         </div>
 
-        <!-- EDIT COMMENT FORM  -->
-        <form action="/app/comments/update-comment.php?id=<?= $comment['post_id']; ?>&comment-id=<?= $comment['id']; ?>" class="comment-form-hidden" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>" method="post">
-            <div class="form-group">
-                <label for="edit">Edit Comment</label>
-                <textarea class="form-control" rows="10" cols="5" type="text" name="edit" id="edit"><?= $comment['content']; ?></textarea>
-                <!-- <small class="form-text text-muted">Write something about yourself</small> -->
-            </div><!-- /form-group -->
-            <button type="submit" class="edit-comment-save">Save</button>
-            <a href="/post.php?id=<?= $post_id ?>" class="edit-comment-cancel">Cancel</a>
-        </form>
 
 
         <hr>
