@@ -63,7 +63,7 @@ This is an individual assignment in PHP. Our class has created our own brand new
 
 ## 👩‍💻 Tested by
 
-- Person 1
+- [Amanda Fager](https://github.com/amandafager)
 - Person 2
 
 ## 🍭 Code Review

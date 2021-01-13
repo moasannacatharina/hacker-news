@@ -40,7 +40,7 @@ if (isset($_POST['email'])) {
 
 
 if (isset($_POST['bio'])) {
-    $bio = $_POST['bio'];
+    $bio = filter_var($_POST['bio'], FILTER_SANITIZE_STRING);
     $id = $_SESSION['user']['id'];
 
     $statement = $database->prepare('UPDATE users SET biography = :biography WHERE id = :id');

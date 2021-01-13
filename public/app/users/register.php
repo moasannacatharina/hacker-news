@@ -6,9 +6,15 @@ require __DIR__ . '/../autoload.php';
 
 if (isset($_POST['email'], $_POST['password'], $_POST['first_name'], $_POST['last_name'])) {
     $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $password = $_POST['password'];
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
+    $first_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
+    $last_name = filter_var($_POST['last_name'], FILTER_SANITIZE_STRING);
+
+    if (strlen(trim($_POST["password"])) < 6) {
+        $_SESSION['error_message'] = "Password must have atleast 6 characters.";
+        redirect('/register.php');
+    } else {
+        $password = trim($_POST["password"]);
+    }
 
     $password = password_hash($password, PASSWORD_DEFAULT);
 

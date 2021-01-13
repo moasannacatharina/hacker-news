@@ -1,9 +1,17 @@
 <?php require __DIR__ . '/app/autoload.php'; ?>
 <?php require __DIR__ . '/views/header.php'; ?>
+<?php
+$error_message = $_SESSION['error_message'] ?? '';
+unset($_SESSION['error_message']);
 
+?>
 <article>
     <h1>Create new account</h1>
-
+    <?php if ($error_message !== '') : ?>
+        <div class="alert alert-danger">
+            <?= $error_message; ?>
+        </div><!-- /alert -->
+    <?php endif; ?>
     <form action="app/users/register.php" method="post">
         <div class="form-group">
             <label for="password">First name</label>
