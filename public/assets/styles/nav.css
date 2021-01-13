@@ -78,18 +78,12 @@ input[type="reset"] {
 
 .dropdown-content-hidden {
   display: none;
-  /* position: absolute;
-    background-color: #7b7a81;
-    min-height: 70px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    flex-direction: column; */
 }
 
 .dropdown-content {
   display: flex;
   position: absolute;
-  background-color: #525057;
+  background-color: #7b7a81;
   min-height: 70px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;

@@ -30,7 +30,7 @@
     top: 0;
     left: 150px;
     background-color: #525057;
-    width: 40%;
+    width: 100%;
     justify-content: flex-start;
   }
 
@@ -79,5 +79,9 @@
   form button:hover {
     text-decoration: underline;
     text-underline-position: under;
+  }
+
+  .dropdown-content {
+    background-color: #525057;
   }
 }
