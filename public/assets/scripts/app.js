@@ -16,7 +16,7 @@ closeBtn.addEventListener("click", () => {
   menuBtn.style.display = "block";
 });
 
-// DROPDOWN MENU
+// DROPDOWN MENU IN NAV
 
 const dropDownBtn = document.querySelector(".dropbtn");
 const dropDownContent = document.querySelector(".dropdown-content-hidden");
@@ -37,29 +37,31 @@ if (dropDownBtn) {
 const numberOfVotes = document.querySelectorAll(".number-of-votes");
 const upvoteButtons = document.querySelectorAll(".upvote-btn");
 
-upvoteButtons.forEach((upvoteBtn) => {
-  upvoteBtn.addEventListener("click", (e) => {
-    const url = e.currentTarget.dataset.url;
-    fetch(`'../../app/posts/upvote.php?id=${url}'`, {
-      credentials: "include",
-      method: "POST",
-    })
-      .then(function (res) {
-        return res.json();
+if (upvoteButtons) {
+  upvoteButtons.forEach((upvoteBtn) => {
+    upvoteBtn.addEventListener("click", (e) => {
+      const url = e.currentTarget.dataset.url;
+      fetch(`'../../app/posts/upvote.php?id=${url}'`, {
+        credentials: "include",
+        method: "POST",
       })
-      .then((upvote) => {
-        numberOfVotes.forEach((item) => {
-          if (item.dataset.url == url) {
-            if (upvote == 1) {
-              item.textContent = `${upvote} vote`;
-            } else {
-              item.textContent = `${upvote} votes`;
+        .then(function (res) {
+          return res.json();
+        })
+        .then((upvote) => {
+          numberOfVotes.forEach((item) => {
+            if (item.dataset.url == url) {
+              if (upvote == 1) {
+                item.textContent = `${upvote} vote`;
+              } else {
+                item.textContent = `${upvote} votes`;
+              }
             }
-          }
+          });
         });
-      });
+    });
   });
-});
+}
 
 upvoteButtons.forEach((upvoteBtn) => {
   upvoteBtn.addEventListener("click", () => {
@@ -91,7 +93,7 @@ editCommentBtns.forEach((editBtn) => {
   });
 });
 
-// EDIT REPLY-BUTTON
+// EDIT REPLY-BOX
 
 const editReplyBtns = document.querySelectorAll(".edit-reply");
 const editHiddenReplyForm = document.querySelectorAll(
