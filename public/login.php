@@ -27,13 +27,13 @@ unset($_SESSION['message']);
         <div class="form-group">
             <label for="email">Email</label>
             <input class="form-control" type="email" name="email" id="email" required>
-            <small class="form-text text-muted">Please provide the your email address.</small>
+            <small class="form-text text-muted">Please provide your email address.</small>
         </div><!-- /form-group -->
 
         <div class="form-group">
             <label for="password">Password</label>
             <input class="form-control" type="password" name="password" id="password" required>
-            <small class="form-text text-muted">Please provide the your password (passphrase).</small>
+            <small class="form-text text-muted">Please provide your password (passphrase).</small>
         </div><!-- /form-group -->
 
         <button type="submit" class="btn btn-primary" id="log-in-btn">Login</button>
