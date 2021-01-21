@@ -21,6 +21,19 @@ function countUpvotes($database, int $postId)
     return $upvotes['COUNT(*)'];
 }
 
+/* Idas kod */
+function countCommentsUpvotes($database, int $commentId)
+{
+
+    $statement = $database->prepare('SELECT COUNT(*) FROM comments_upvotes WHERE comment_id = :commentId');
+    $statement->bindParam(':commentId', $commentId, PDO::PARAM_INT);
+    $statement->execute();
+
+    $commentUpvotes = $statement->fetch();
+
+    return $commentUpvotes['COUNT(*)'];
+}
+/* slut på idas kod */
 function countComments($database, int $postId)
 {
 

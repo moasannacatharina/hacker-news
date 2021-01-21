@@ -108,7 +108,14 @@ input[type="reset"] {
 .upvote-btn-darker {
   fill: #d492b8;
 }
-
+.upvote-comment-btn {
+  width: 14px;
+  margin-right: 5px;
+  fill: lightseagreen;
+}
+.upvote-comment-btn-darker {
+  fill: #d492b8;
+}
 .active {
   text-decoration: underline;
   text-underline-position: under;

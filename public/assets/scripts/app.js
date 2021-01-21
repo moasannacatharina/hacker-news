@@ -145,3 +145,42 @@ links.forEach((link) => {
     e.preventDefault();
   });
 });
+
+// IDAS
+/// LIKE COMMENT BUTTON
+const numberOfCommentVotes = document.querySelectorAll(
+  ".number-of-comment-votes"
+);
+const upvoteCommentButtons = document.querySelectorAll(".upvote-comment-btn");
+
+if (upvoteCommentButtons) {
+  upvoteCommentButtons.forEach((upvoteCommentBtn) => {
+    upvoteCommentBtn.addEventListener("click", (e) => {
+      const url = e.currentTarget.dataset.url;
+      fetch(`'../../app/comments/comments-upvotes.php?id=${url}'`, {
+        credentials: "include",
+        method: "POST",
+      })
+        .then(function (res) {
+          return res.json();
+        })
+        .then((commentsUpvotes) => {
+          numberOfCommentVotes.forEach((item) => {
+            if (item.dataset.url == url) {
+              if (commentsUpvotes == 1) {
+                item.textContent = `${commentsUpvotes} vote`;
+              } else {
+                item.textContent = `${commentsUpvotes} votes`;
+              }
+            }
+          });
+        });
+    });
+  });
+}
+
+upvoteCommentButtons.forEach((upvoteCommentBtn) => {
+  upvoteCommentBtn.addEventListener("click", () => {
+    upvoteCommentBtn.classList.toggle("upvote-comment-btn-darker");
+  });
+});
