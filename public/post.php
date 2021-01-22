@@ -153,7 +153,6 @@ $time = $post['created_at'];
 <article class="comments">
     <?php foreach ($comments as $comment) : ?>
         <?php if (isset($_SESSION['user'])) {
-
             $statement = $database->prepare('SELECT * FROM comments_upvotes WHERE comment_id = :comment_id AND user_id = :user_id');
             $statement->bindParam(':comment_id', $comment['id'], PDO::PARAM_INT);
             $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -167,11 +166,10 @@ $time = $post['created_at'];
             <div class="post-info">
                 <div>
                     <?php if (isset($_SESSION['user'])) : ?>
-
                         <button data-url="<?= $comment['id']; ?>" class="upvote-comment-btn
-                    <?php if (isset($_SESSION['user'])) : ?>
-                        <?php if ($commentUpvote !== false) : ?>
-                            upvote-comment-btn-darker
+                          <?php if (isset($_SESSION['user'])) : ?>
+                             <?php if ($commentUpvote !== false) : ?>
+                                 upvote-comment-btn-darker
                         <?php endif; ?>
                     <?php endif; ?>">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.171 512.171">
