@@ -107,6 +107,7 @@ $time = $post['created_at'];
     <div class="subtext">
         <?php $upvotes = countUpvotes($database, $post['id']); ?>
         <?php $numberOfComments = countComments($database, $post['id']); ?>
+
         <div>
             <?php if ($upvotes == 1) : ?>
                 <span class="number-of-votes" data-url="<?= $post['id']; ?>">
@@ -126,6 +127,8 @@ $time = $post['created_at'];
                     <?= $numberOfComments; ?> comments
                 </span>
             <?php endif; ?>
+
+
         </div>
         <p>
             <?= $post['email']; ?>
@@ -149,12 +152,40 @@ $time = $post['created_at'];
 </article>
 <article class="comments">
     <?php foreach ($comments as $comment) : ?>
+        <?php if (isset($_SESSION['user'])) {
+            $statement = $database->prepare('SELECT * FROM comments_upvotes WHERE comment_id = :comment_id AND user_id = :user_id');
+            $statement->bindParam(':comment_id', $comment['id'], PDO::PARAM_INT);
+            $statement->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $statement->execute();
+            $commentUpvote = $statement->fetch();
+        }
+        ?>
+
         <!-- ALL COMMENTS IN A LOOP  -->
         <div class="comment" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>">
-            <p class="comment-user">
-                <?= $comment['email'] . ' ' . convertTime(strtotime($comment['created_at'])); ?>
-                ago
-            </p>
+            <div class="post-info">
+                <div>
+                    <?php if (isset($_SESSION['user'])) : ?>
+                        <button data-url="<?= $comment['id']; ?>" class="upvote-comment-btn
+                            <?php if (isset($_SESSION['user'])) : ?>
+                                <?php if ($commentUpvote !== false) : ?>
+                                         upvote-comment-btn-darker
+                                <?php endif; ?>
+                            <?php endif; ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.171 512.171">
+                                <path d="M476.723 216.64L263.305 3.115A10.652 10.652 0 00255.753 0a10.675 10.675 0 00-7.552 3.136L35.422 216.64c-3.051 3.051-3.947 7.637-2.304 11.627a10.67 10.67 0 009.856 6.571h117.333v266.667c0 5.888 4.779 10.667 10.667 10.667h170.667c5.888 0 10.667-4.779 10.667-10.667V234.837h116.885c4.309 0 8.192-2.603 9.856-6.592 1.664-3.989.725-8.554-2.326-11.605z" />
+                            </svg>
+                        </button>
+
+                    <?php endif; ?>
+
+                    <p class="comment-user">
+                        <?= $comment['email'] . ' ' . convertTime(strtotime($comment['created_at'])); ?>
+                        ago
+                    </p>
+                </div>
+            </div>
+
             <?php if (isset($_SESSION['user'])) : ?>
                 <?php if ($comment['user_id'] === $_SESSION['user']['id']) : ?>
                     <div class="edit-comment-container">
@@ -169,9 +200,26 @@ $time = $post['created_at'];
                     </div>
                 <?php endif; ?>
             <?php endif; ?>
+
             <p class="comment-content" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>">
                 <?= $comment['content']; ?>
             </p>
+            <div class="subtext">
+                <!-- Idas kod -->
+                <?php $commentsUpvotes = countCommentsUpvotes($database, $comment['id']); ?>
+                <div>
+                    <?php if ($commentsUpvotes == 0) : ?>
+                        <span class="number-of-comment-votes" data-url="<?= $comment['id']; ?>">
+                            <?= $commentsUpvotes; ?> vote
+                        </span>
+                    <?php else : ?>
+                        <span class="number-of-comment-votes" data-url="<?= $comment['id']; ?>">
+                            <?= $commentsUpvotes; ?> votes
+                        </span>
+                    <?php endif; ?>
+                </div>
+            </div>
+            <!--  slut-->
 
             <!-- EDIT COMMENT FORM  -->
             <form action="/app/comments/update-comment.php?id=<?= $comment['post_id']; ?>&comment-id=<?= $comment['id']; ?>" class="comment-form-hidden" data-id="<?= $comment['post_id']; ?>" data-commentid="<?= $comment['id']; ?>" method="post">
