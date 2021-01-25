@@ -40,8 +40,9 @@ if (isset($_POST['email'])) {
     $emailMessage .= '<a href="' . $url . ' ">' . $url  . '; </a>';
 
 
-    $headers = "From: Hacker News <reset@hackernews.com> \n";
+    $headers = "From: Hacker News <idatestcode@gmail.com> \n";
     $headers .= "Content-type: text/html\n";
+
 
     mail($sendTo, $emailSubject, $emailMessage, $headers);
 
