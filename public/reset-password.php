@@ -10,7 +10,9 @@ unset($_SESSION['message']);
 
 ?>
 <article>
-    <h1>Login</h1>
+    <h2>Reset your password</h2>
+    <br>
+    <p class="create-account-text"> An Email will be sent to you with instructions how to reset your long lost password </p>
 
     <?php if ($error_message !== '') : ?>
         <div class="alert alert-danger">
@@ -23,23 +25,15 @@ unset($_SESSION['message']);
     <?php endif; ?>
 
     <!-- LOGIN FORM  -->
-    <form action="app/users/login.php" method="post">
+    <form action="app/users/password-email-reset.php" method="post">
         <div class="form-group">
             <label for="email">Email</label>
             <input class="form-control" type="email" name="email" id="email" required>
             <small class="form-text text-muted">Please provide your email address.</small>
-        </div><!-- /form-group -->
+        </div>
 
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input class="form-control" type="password" name="password" id="password" required>
-            <small class="form-text text-muted">Please provide your password (passphrase).</small>
-        </div><!-- /form-group -->
+        <button type="submit" class="btn btn-primary" id="log-in-btn">Reset your password!</button>
 
-        <button type="submit" class="btn btn-primary" id="log-in-btn">Login</button>
-        <p class="create-account-text">Forgot your password? <a href="/reset-password.php">here</a></p>
-        <br>
-        <p class="create-account-text">Don't have an account? Create an account <a href="/register.php">here</a></p>
     </form>
 
 

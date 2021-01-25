@@ -21,7 +21,6 @@ function countUpvotes($database, int $postId)
     return $upvotes['COUNT(*)'];
 }
 
-/* Idas kod */
 function countCommentsUpvotes($database, int $commentId)
 {
 
@@ -33,7 +32,7 @@ function countCommentsUpvotes($database, int $commentId)
 
     return $commentUpvotes['COUNT(*)'];
 }
-/* slut på idas kod */
+
 function countComments($database, int $postId)
 {
 
