@@ -33,8 +33,8 @@ unset($_SESSION['message']);
 
             <form action="app/users/password-reset.php" method="post">
                 <div class="form-group">
-                    <input type="hidden" name="selector" value="<?php echo $selector; ?> ">
-                    <input type="hidden" name="validator" value="<?php echo $validator; ?> ">
+                    <input type="hidden" name="selector" value="<?php echo $selector; ?>">
+                    <input type="hidden" name="validator" value="<?php echo $validator; ?>">
                     <label for="password">Create new password</label>
                     <input class="form-control" type="password" name="password" id="password" required>
                     <small class="form-text text-muted">Please provide your new password (minimum 6 characters) (passphrase).</small>
