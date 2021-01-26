@@ -84,6 +84,12 @@ This is an individual assignment in PHP. Our class has created our own brand new
 - Good icons for editing and deleting comments.
 - Don't really get why the profile picture is visable on posts.
 
+## To Do
+
+- Fix error that signs you in as an empty user when you first open the site. At the moment, a workaround is to go to /app/users/logout.php in the browser which signs you out.
+- Fix lint issues
+- Figure out why the prepare-statement doesn't work in password-reset.php.
+
 ## 🎈Created by
 
 - [Moa Berg](https://github.com/moasannacatharina)
