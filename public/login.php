@@ -37,6 +37,8 @@ unset($_SESSION['message']);
         </div><!-- /form-group -->
 
         <button type="submit" class="btn btn-primary" id="log-in-btn">Login</button>
+        <p class="create-account-text">Forgot your password? <a href="/reset-password.php">here</a></p>
+        <br>
         <p class="create-account-text">Don't have an account? Create an account <a href="/register.php">here</a></p>
     </form>
 

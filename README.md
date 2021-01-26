@@ -46,6 +46,8 @@ This is an individual assignment in PHP. Our class has created our own brand new
 
 - Delete your account along with all your posts, user info, upvotes and comments.
 - Reply to comments
+- Be able to upvote comments.
+- Be able to reset your password with email. Used with [PHPMail](https://github.com/PHPMailer/PHPMailer)
 
 ## 💌 Instructions
 
@@ -72,14 +74,14 @@ This is an individual assignment in PHP. Our class has created our own brand new
 **Comments by Jon McGarvie**
 
 - `PHP Warning: Undefined array key "id"` in multiple places. Find in console.
-- When you first enter the website it signs you in as an empty user, which means you can't see the login button until you log out. 
+- When you first enter the website it signs you in as an empty user, which means you can't see the login button until you log out.
 - On `index.php:5` you can do `SELECT posts.*, users.email ...` to select everything from posts (and of course users.email).
 - On the post feed you should have the url next to the title so you don't go in completely blind.
 - Good solution for the upvotes, as you don't have to reload the site in order to upvote.
 - You should make it so that when you make a post it redirects you to that specific post.
 - Good error messages.
 - After you register or login a user you should unset the password variables so that they cannot be accessed.
-- Good icons for editing and deleting comments. 
+- Good icons for editing and deleting comments.
 - Don't really get why the profile picture is visable on posts.
 
 ## 🎈Created by
