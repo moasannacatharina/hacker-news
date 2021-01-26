@@ -208,7 +208,7 @@ $time = $post['created_at'];
                 <!-- Idas kod -->
                 <?php $commentsUpvotes = countCommentsUpvotes($database, $comment['id']); ?>
                 <div>
-                    <?php if ($commentsUpvotes == 0) : ?>
+                    <?php if ($commentsUpvotes == 1) : ?>
                         <span class="number-of-comment-votes" data-url="<?= $comment['id']; ?>">
                             <?= $commentsUpvotes; ?> vote
                         </span>
@@ -235,7 +235,7 @@ $time = $post['created_at'];
 
             <!-- REPLIES TO ONE COMMENT IN A LOOP  -->
             <?php foreach ($replies as $reply) : ?>
-                <?php if ($reply['comment_id'] === $comment['id']) : ?>
+                <?php if ($reply['comment_id'] == $comment['id']) : ?>
                     <div class="reply-container">
                         <p class="comment-user">
                             <?= $reply['email'] . ' ' . convertTime(strtotime($reply['created_at'])); ?>
