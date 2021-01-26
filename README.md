@@ -46,9 +46,8 @@ This is an individual assignment in PHP. Our class has created our own brand new
 
 - Delete your account along with all your posts, user info, upvotes and comments.
 - Reply to comments
-
 - Be able to upvote comments.
-- Be able to reset your password wit email. Used with [PHPMail](https://github.com/PHPMailer/PHPMailer)
+- Be able to reset your password with email. Used with [PHPMail](https://github.com/PHPMailer/PHPMailer)
 
 ## 💌 Instructions
 
