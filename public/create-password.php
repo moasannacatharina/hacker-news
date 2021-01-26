@@ -30,7 +30,6 @@ unset($_SESSION['message']);
         $validator = filter_var($_GET['validator'], FILTER_SANITIZE_STRING);
 
         if (ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false) : ?>
-
             <form action="app/users/password-reset.php" method="post">
                 <div class="form-group">
                     <input type="hidden" name="selector" value="<?php echo $selector; ?>">

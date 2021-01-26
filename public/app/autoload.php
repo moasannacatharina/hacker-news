@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 // Start the session engines.
 session_start();
 
