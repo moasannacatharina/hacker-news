@@ -4,7 +4,7 @@
 
 ## 👀 About
 
-This is an individual assignment in PHP. Our class has created our own brand new version of the site [Hacker News](https://news.ycombinator.com/news).
+This is an individual assignment in PHP. I have created my own brand new version of the site [Hacker News](https://news.ycombinator.com/news).
 
 <details><summary>User stories included in the project</summary>
 
